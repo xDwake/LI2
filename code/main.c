@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
-#include "parser.h"
+#include "parser.c"
 
 int main (){
     char line [10240];
