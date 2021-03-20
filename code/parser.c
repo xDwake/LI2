@@ -11,7 +11,7 @@ void PUSH (long val, long stack[], int p){  //elemento,stack,indice
 }
 
 long POP (long stack[], int p){
-    p--;
+    --p;
     return (stack[p]);
 }
 
