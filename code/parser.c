@@ -55,7 +55,7 @@ void parser (char *line){
                 long x = POP(stack,p);
                 p--;
                 long y = POP(stack,p);
-                PUSH (x*y,stack,p);
+                PUSH (y*x,stack,p);
                 p++;
         } 
         else if (strcmp(token, "/") == 0){
@@ -63,7 +63,7 @@ void parser (char *line){
                 long x = POP(stack,p);
                 p--;
                 long y = POP(stack,p);
-                PUSH (x/y,stack,p);
+                PUSH (y/x,stack,p);
                 p++;
         }
         else if (strcmp(token, "(") == 0){
