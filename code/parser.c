@@ -97,7 +97,8 @@ void parser (char *line){
         else if (strcmp(token, "%") == 0){
                 p--;
                 long x = POP(stack,p);
-                PUSH(abs(x),stack,p);
+                if (x<0) PUSH(-x,stack,p);
+                else PUSH(x,stack,p);
                 p++;
         }
         else if (strcmp(token, "^") == 0){
