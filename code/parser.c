@@ -1,28 +1,21 @@
+/**
+ * @file Funções auxiliares do programa.
+ */ 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "parser.h"
+#include "stack.h"
 #include <math.h>
 
-
-void PUSH (long val, long stack[], int p){  //elemento,stack,indice
-    stack[p] = val;
-
-}
-
-long POP (long stack[], int p){
-
-    return (stack[p]);
-}
-
-void print_stack(long stack[],int p){
-    for(int i=0;i<p;i++){
-             printf ("%ld", stack[i]);
-        }
-        printf("\n");
-}
-
-
+/**
+ * \brief Função que recebe os inputs do utilizador e realiza as operações em conformidade.
+ * 
+ * Esta função separa os inputs por espaços, tabs ou mudanças de linha, e para a realização do guião 1 apenas realiza as operações
+ * matemáticas com os inputs da forma estipulada pelo enunciado.
+ * 
+ * @param line A linha de inputs que foi lida.
+ */ 
 void parser (char *line){ 
     long stack[10240];
     int p=0;     
