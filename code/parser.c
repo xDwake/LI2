@@ -24,98 +24,76 @@ void parser (char *line){
         char *rem;
         long val_i = strtol(token, &rem, 10); // strtol is used to find INT's on the input 
         if (strlen(rem) == 0){
-           PUSH(val_i,stack,p);
-           p++;
+           PUSH(val_i,stack,&p);
         } 
         else if (strcmp(token, "+") == 0){
-                p--;
-                long y = POP(stack,p);
-                p--;
-                long x = POP(stack,p);
-                PUSH(x+y,stack,p);
-                p++;
+                long y = POP(stack,&p);
+                long x = POP(stack,&p);
+                PUSH(x+y,stack,&p);
+                
         }
         else if (strcmp(token, "-") == 0){
-                p--;
-                long x = POP(stack,p);
-                p--;
-                long y = POP(stack,p);
-                PUSH (y-x,stack,p);
-                p++;
+                long x = POP(stack,&p);
+                long y = POP(stack,&p);
+                PUSH (y-x,stack,&p);
+                
         }
         else if (strcmp(token, "*") == 0){
-                p--;
-                long x = POP(stack,p);
-                p--;
-                long y = POP(stack,p);
-                PUSH (y*x,stack,p);
-                p++;
+                long x = POP(stack,&p);
+                long y = POP(stack,&p);
+                PUSH (y*x,stack,&p);
+                
         } 
         else if (strcmp(token, "/") == 0){
-                p--;
-                long x = POP(stack,p);
-                p--;
-                long y = POP(stack,p);
-                PUSH (y/x,stack,p);
-                p++;
+                long x = POP(stack,&p);
+                long y = POP(stack,&p);
+                PUSH (y/x,stack,&p);
+                
         }
         else if (strcmp(token, "(") == 0){
-                p--;
-                long x = POP(stack,p);
-                PUSH (x-1,stack,p);
-                p++;
+                long x = POP(stack,&p);
+                PUSH (x-1,stack,&p);
+                
         }
         else if (strcmp(token, ")") == 0){
-                p--;
-                long x = POP(stack,p);
-                PUSH (x+1,stack,p);
-                p++;
+                long x = POP(stack,&p);
+                PUSH (x+1,stack,&p);
+                
         }
         else if (strcmp(token, "&") == 0){
-                p--;
-                long x = POP(stack,p);
-                p--;
-                long y =POP(stack,p);
-                PUSH (x&y,stack,p);
-                p++;
+                long x = POP(stack,&p);
+                long y =POP(stack,&p);
+                PUSH (x&y,stack,&p);
+                
         }
         else if (strcmp(token, "|") == 0){
-                p--;
-                long x = POP(stack,p);
-                p--;
-                long y = POP(stack,p);
-                PUSH (x|y,stack,p);
-                p++;
+                long x = POP(stack,&p);
+                long y = POP(stack,&p);
+                PUSH (x|y,stack,&p);
+                
         }
         else if (strcmp(token, "%") == 0){
-                p--;
-                long x = POP(stack,p);
-                p--;
-                long y = POP(stack,p);
-                PUSH (y%x,stack,p);
-                p++;
+                long x = POP(stack,&p);
+                long y = POP(stack,&p);
+                PUSH (y%x,stack,&p);
+                
         }
         else if (strcmp(token, "^") == 0){
-                p--;
-                long x = POP(stack,p);
-                p--;
-                long y = POP(stack,p);
-                PUSH (x^y,stack,p);
-                p++;
+                long x = POP(stack,&p);
+                long y = POP(stack,&p);
+                PUSH (x^y,stack,&p);
+                
         }
         else if (strcmp(token, "~") == 0){
-                p--;
-                long x = POP(stack,p);
-                PUSH (~x,stack,p);
-                p++;
+                long x = POP(stack,&p);
+                PUSH (~x,stack,&p);
+                
         }
         else if (strcmp(token, "#") == 0){
-                p--;
-                long x = POP(stack,p);
-                p--;
-                long y = POP(stack,p);
-                PUSH (pow(y,x),stack,p);
-                p++;
+                long x = POP(stack,&p);
+                long y = POP(stack,&p);
+                PUSH (pow(y,x),stack,&p);
+                
         }
     }  
     print_stack(stack,p);

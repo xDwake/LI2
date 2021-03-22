@@ -11,8 +11,9 @@
  * @param stack O array desigado para a stack.
  * @param p O inteiro que controla o índice da stack.
  */
-void PUSH (long val, long stack[], int p){  
-    stack[p] = val;
+void PUSH (long val, long stack[], int *p){
+    stack[*p] = val;
+    (*p)++;
 }
 
 /**
@@ -23,8 +24,9 @@ void PUSH (long val, long stack[], int p){
  * 
  * @returns O valor que está na stack com o índice decrementado.
  */ 
-long POP (long stack[], int p){
-    return (stack[p]);
+long POP (long stack[], int *p){
+    (*p)--;
+    return (stack[*p]);
 }
 
 /** 
