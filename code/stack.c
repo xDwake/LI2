@@ -9,7 +9,7 @@
  * 
  * @param val O elemento a ser colocado na stack.
  * @param stack O array desigado para a stack.
- * @param p O inteiro que controla o índice da stack.
+ * @param p O pointer que controla o índice da stack.
  */
 void PUSH (long val, long stack[], int *p){
     stack[*p] = val;
@@ -20,7 +20,7 @@ void PUSH (long val, long stack[], int *p){
  * \brief Função que realiza a operação POP na stack.
  * 
  * @param stack O array designado para a stack.
- * @param p O inteiro que controla o índice da stack.
+ * @param p O pointer que controla o índice da stack.
  * 
  * @returns O valor que está na stack com o índice decrementado.
  */ 
