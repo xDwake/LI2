@@ -1,5 +1,16 @@
+/** \mainpage LI2 2021
+ * 
+ * Grupo: EIPL3G02
+ * 
+ * Projeto realizado por: Pedro Miguel Castilho Martins, Gabriel Alexandre Monteiro da Silva,
+ *                        Duarte Gonçalves Parente, Flávio Alexandre Marques da Silva.
+ * 
+ */
+
+
 /**
- * @file Ficheiro que contém a função principal do programa
+ * @file main.c 
+ * \brief Ficheiro que contém a função principal do programa
  */ 
 #include <stdio.h>
 #include <stdlib.h>

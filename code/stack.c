@@ -1,5 +1,6 @@
 /**
- * @file Funções relacionadas com a stack.
+ * @file stack.c 
+ * \brief Funções relacionadas com a stack.
  */  
 #include <stdio.h>
 #include "stack.h"

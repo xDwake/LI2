@@ -1,5 +1,6 @@
 /**
- * @file Funções auxiliares do programa.
+ * @file parser.c 
+ * \brief Funções auxiliares do programa.
  */ 
 #include <stdio.h>
 #include <stdlib.h>
