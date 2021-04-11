@@ -18,84 +18,83 @@
  * @param line A linha de inputs que foi lida.
  */ 
 void parser (char *line){ 
-    long stack[10240];
-    int p=0;     
+    STACK *s = create_stack();
     char *limits = " \t\n";
     for (char *token = strtok(line,limits); token != NULL; token = strtok(NULL, limits)) { // everytime there's a " ", "\t" or "\n" the elements in between are saved as tokens
         char *rem;
         long val_i = strtol(token, &rem, 10); // strtol is used to find INT's on the input 
         if (strlen(rem) == 0){
-           PUSH(val_i,stack,&p);
+           push_LONG(s,val_i);
         } 
         else if (strcmp(token, "+") == 0){
-                long y = POP(stack,&p);
-                long x = POP(stack,&p);
-                PUSH(x+y,stack,&p);
+                long y = pop_LONG(s);
+                long x = pop_LONG(s);
+                push_LONG(s,y+x);
                 
         }
         else if (strcmp(token, "-") == 0){
-                long x = POP(stack,&p);
-                long y = POP(stack,&p);
-                PUSH (y-x,stack,&p);
+                long x = pop_LONG(s);
+                long y = pop_LONG(s);
+                push_LONG(s,y-x);
                 
         }
         else if (strcmp(token, "*") == 0){
-                long x = POP(stack,&p);
-                long y = POP(stack,&p);
-                PUSH (y*x,stack,&p);
+                long x = pop_LONG(s);
+                long y = pop_LONG(s);
+                push_LONG(s,y*x);
                 
         } 
         else if (strcmp(token, "/") == 0){
-                long x = POP(stack,&p);
-                long y = POP(stack,&p);
-                PUSH (y/x,stack,&p);
+                long x = pop_LONG(s);
+                long y = pop_LONG(s);
+                push_LONG(s,y/x);
                 
         }
         else if (strcmp(token, "(") == 0){
-                long x = POP(stack,&p);
-                PUSH (x-1,stack,&p);
+                long x = pop_LONG(s);
+                push_LONG(s,x-1);
                 
         }
         else if (strcmp(token, ")") == 0){
-                long x = POP(stack,&p);
-                PUSH (x+1,stack,&p);
+                long x = pop_LONG(s);
+                push_LONG(s,x+1);
                 
         }
         else if (strcmp(token, "&") == 0){
-                long x = POP(stack,&p);
-                long y =POP(stack,&p);
-                PUSH (x&y,stack,&p);
+                long x = pop_LONG(s);
+                long y = pop_LONG(s);
+                push_LONG(s,x&y);
                 
         }
         else if (strcmp(token, "|") == 0){
-                long x = POP(stack,&p);
-                long y = POP(stack,&p);
-                PUSH (x|y,stack,&p);
+                long x = pop_LONG(s);
+                long y = pop_LONG(s);
+                push_LONG(s,x|y);
                 
         }
         else if (strcmp(token, "%") == 0){
-                long x = POP(stack,&p);
-                long y = POP(stack,&p);
-                PUSH (y%x,stack,&p);
+                long x = pop_LONG(s);
+                long y = pop_LONG(s);
+                push_LONG(s,y%x);
                 
         }
         else if (strcmp(token, "^") == 0){
-                long x = POP(stack,&p);
-                long y = POP(stack,&p);
-                PUSH (x^y,stack,&p);
+                long x = pop_LONG(s);
+                long y = pop_LONG(s);
+                push_LONG(s,x^y);
                 
         }
         else if (strcmp(token, "~") == 0){
-                long x = POP(stack,&p);
-                PUSH (~x,stack,&p);
+                long x = pop_LONG(s);
+                push_LONG(s,~x);
                 
         }
         else if (strcmp(token, "#") == 0){
-                long x = POP(stack,&p);
-                long y = POP(stack,&p);
-                PUSH (pow(y,x),stack,&p);
+                long x = pop_LONG(s);
+                long y = pop_LONG(s);
+                push_LONG(s,pow(y,x));
                 
         }
     }  
-    print_stack(stack,p);
-}    
+    print_stack(s);
+}
