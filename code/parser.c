@@ -219,7 +219,7 @@ void parser (char *line){
                 }     
         }
         else if (strcmp(token, "@") == 0){
-                if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG) && has_type((get_elem(s,1)),LONG)){
+                if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG) && has_type((get_elem(s,2)),LONG)){
                         long x = pop_LONG(s);
                         long y = pop_LONG(s);
                         long z = pop_LONG(s);
@@ -227,7 +227,7 @@ void parser (char *line){
                         push_LONG(s,x);
                         push_LONG(s,z);
                 }
-                else if (has_type((get_elem(s,0)),DOUBLE) && has_type((get_elem(s,1)),DOUBLE) && has_type((get_elem(s,1)),DOUBLE)){
+                else if (has_type((get_elem(s,0)),DOUBLE) && has_type((get_elem(s,1)),DOUBLE) && has_type((get_elem(s,2)),DOUBLE)){
                         double x = pop_DOUBLE(s);
                         double y = pop_DOUBLE(s);
                         double z = pop_DOUBLE(s);
