@@ -240,6 +240,62 @@ void parser (char *line){
                 long x = pop_LONG(s);
                 push(s,get_elem(s,x));
         } 
+        else if (strcmp(token, "c") == 0){
+                if (has_type((get_elem(s,0)),LONG)){
+                        long x = pop_LONG (s);
+                        push_CHAR (s,(char)x);
+                }
+                else if (has_type((get_elem(s,0)),DOUBLE)){
+                        double x = pop_DOUBLE (s);
+                        push_CHAR (s,(char)x);
+                }
+                /*else if (has_type((get_elem(s,0)),STRING)){ // ---> dont know yet 
+                        char *x = pop_STRING (s);
+                        push_CHAR (s,y);
+                }*/
+                
+        }
+        else if (strcmp(token, "i") == 0){
+                if (has_type((get_elem(s,0)),DOUBLE)) {
+                        double x = pop_DOUBLE (s);
+                        push_LONG (s,(long) x);
+                }
+                else if (has_type((get_elem(s,0)),CHAR)){
+                        char x = pop_CHAR (s);
+                        push_LONG (s,(long)x);
+                }
+                else if (has_type((get_elem(s,0)),STRING)){
+                        char *x = pop_STRING (s);
+                        long y = atol(x);
+                        push_LONG (s,y);
+                }
+        }
+        else if (strcmp(token,"f") == 0){
+                if (has_type((get_elem(s,0)),LONG)) {
+                        long x = pop_LONG (s);
+                        push_DOUBLE (s,(double)x);
+                }
+                else if (has_type((get_elem(s,0)),CHAR)) {
+                        char x = pop_CHAR (s);
+                        push_DOUBLE (s,(double)x);
+                }
+                else if (has_type((get_elem(s,0)),STRING)) {
+                        char *x = pop_STRING (s);
+                        double y = atof (x);
+                        push_DOUBLE (s,y);
+                }
+        }
+        /*else if (strcmp(token,'s') == 0){
+                if (has_type((get_elem(s,0)),LONG)) {
+                        long x = pop_LONG (s);
+                        
+                }
+                else if (has_type((get_elem(s,0)),DOUBLE)) {
+                        double x = pop_DOUBLE(s);
+                        double c = 
+                        
+                }
+        }*/
         else push_DOUBLE (s,val_d);
     }  
     print_stack(s);
