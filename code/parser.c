@@ -123,7 +123,11 @@ void parser (char *line){
                 else if(has_type((get_elem(s,0)),DOUBLE)){
                         double x = pop_DOUBLE(s);
                         push_DOUBLE(s,x-1);
-                } 
+                }
+                else if(has_type((get_elem(s,0)),CHAR)){
+                        char x = pop_CHAR(s);
+                        push_CHAR(s,x-1);
+                }  
         }
         else if (strcmp(token, ")") == 0){
                 if (has_type((get_elem(s,0)),LONG)){
@@ -133,7 +137,11 @@ void parser (char *line){
                 else if(has_type((get_elem(s,0)),DOUBLE)){
                         double x = pop_DOUBLE(s);
                         push_DOUBLE(s,x+1);
-                }            
+                }
+                else if(has_type((get_elem(s,0)),CHAR)){
+                        char x = pop_CHAR(s);
+                        push_CHAR(s,x+1);
+                }              
         }
         else if (strcmp(token, "&") == 0){
                 long x = pop_LONG(s);
@@ -216,7 +224,19 @@ void parser (char *line){
                         double y = pop_DOUBLE(s);
                         push_LONG(s,x);
                         push_DOUBLE(s,y);
-                }     
+                }
+                else if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),CHAR)){
+                        long x = pop_LONG(s);
+                        char y = pop_CHAR(s);
+                        push_LONG(s,x);
+                        push_CHAR(s,y);
+                }
+                else if (has_type((get_elem(s,0)),CHAR) && has_type((get_elem(s,1)),LONG)){
+                        char x = pop_CHAR(s);
+                        long y = pop_LONG(s);
+                        push_CHAR(s,x);
+                        push_LONG(s,y);
+                }      
         }
         else if (strcmp(token, "@") == 0){
                 if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG) && has_type((get_elem(s,2)),LONG)){
@@ -234,7 +254,47 @@ void parser (char *line){
                         push_DOUBLE(s,y);
                         push_DOUBLE(s,x);
                         push_DOUBLE(s,z);
-                } // poderá ser preciso meter mais 6 condições
+                }
+                else if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG) && has_type((get_elem(s,2)),CHAR)){
+                        long x = pop_LONG(s);
+                        long y = pop_LONG(s);
+                        char z = pop_CHAR(s);
+                        push_LONG(s,y);
+                        push_LONG(s,x);
+                        push_CHAR(s,z);
+                }
+                else if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),CHAR) && has_type((get_elem(s,2)),CHAR)){
+                        long x = pop_LONG(s);
+                        char y = pop_CHAR(s);
+                        char z = pop_CHAR(s);
+                        push_CHAR(s,y);
+                        push_LONG(s,x);
+                        push_CHAR(s,z);
+                }
+                else if (has_type((get_elem(s,0)),CHAR) && has_type((get_elem(s,1)),CHAR) && has_type((get_elem(s,2)),CHAR)){
+                        char x = pop_CHAR(s);
+                        char y = pop_CHAR(s);
+                        char z = pop_CHAR(s);
+                        push_CHAR(s,y);
+                        push_CHAR(s,x);
+                        push_CHAR(s,z);
+                }
+                else if (has_type((get_elem(s,0)),CHAR) && has_type((get_elem(s,1)),LONG) && has_type((get_elem(s,2)),LONG)){
+                        char x = pop_CHAR(s);
+                        long y = pop_LONG(s);
+                        long z = pop_LONG(s);
+                        push_LONG(s,y);
+                        push_CHAR(s,x);
+                        push_LONG(s,z);
+                }
+                else if (has_type((get_elem(s,0)),CHAR) && has_type((get_elem(s,1)),CHAR) && has_type((get_elem(s,2)),LONG)){
+                        char x = pop_CHAR(s);
+                        char y = pop_CHAR(s);
+                        long z = pop_LONG(s);
+                        push_CHAR(s,y);
+                        push_CHAR(s,x);
+                        push_LONG(s,z);
+                }
         }
         else if (strcmp(token, "$") == 0){
                 long x = pop_LONG(s);
@@ -296,6 +356,13 @@ void parser (char *line){
                         
                 }
         }*/
+        else if (strcmp(token,"l") == 0){
+                char linha[10240];
+                assert( fgets(linha, 10240,stdin) != NULL);
+                assert( linha[strlen(linha)-1] == '\n');
+                push_STRING(s,&linha[0]);
+
+        }
         else push_DOUBLE (s,val_d);
     }  
     print_stack(s);
