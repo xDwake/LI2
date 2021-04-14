@@ -328,42 +328,10 @@ void choose_potencia (STACK *s){
  * @returns Stack atualizada.
  */
 void choose_troca (STACK *s){
-    if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG)){
-        long x = pop_LONG(s);
-        long y = pop_LONG(s);
-        push_LONG(s,x);
-        push_LONG(s,y);
-    }
-    else if (has_type((get_elem(s,0)),DOUBLE) && has_type((get_elem(s,1)),DOUBLE)){
-            double x = pop_DOUBLE(s);
-            double y = pop_DOUBLE(s);
-            push_DOUBLE(s,x);
-            push_DOUBLE(s,y);
-    }
-    else if (has_type((get_elem(s,0)),DOUBLE) && has_type((get_elem(s,1)),LONG)){
-            double x = pop_DOUBLE(s);
-            long y = pop_LONG(s);
-            push_DOUBLE(s,x);
-            push_LONG(s,y);
-    }
-    else if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),DOUBLE)){
-            long x = pop_LONG(s);
-            double y = pop_DOUBLE(s);
-            push_LONG(s,x);
-            push_DOUBLE(s,y);
-    }
-    else if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),CHAR)){
-            long x = pop_LONG(s);
-            char y = pop_CHAR(s);
-            push_LONG(s,x);
-            push_CHAR(s,y);
-    }
-    else if (has_type((get_elem(s,0)),CHAR) && has_type((get_elem(s,1)),LONG)){
-            char x = pop_CHAR(s);
-            long y = pop_LONG(s);
-            push_CHAR(s,x);
-            push_LONG(s,y);
-    }
+        DATA x = pop (s);
+        DATA y = pop (s);
+        push (s,x);
+        push (s,y);   
 }
 
 /**
