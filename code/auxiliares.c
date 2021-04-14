@@ -1,14 +1,34 @@
+/**
+ * @file auxiliares.c 
+ * \brief Funções auxiliares do programa.
+ */ 
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include "auxiliares.h"
 #include "stack.h"
 
-
+/**
+ * \brief Função que retorna o elemento em determinada posição.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * @param n Posição, na stack, do elemento.
+ * @returns Elemento na posição n da stack.
+ */
 DATA get_elem(STACK *s,int n){
   return s->stack[s->n_elems - n-1];
 }
 
+/**
+ * \brief Função que realiza a operação soma.
+ * 
+ * A função verifica o tipo do elemento do topo da stack e retira-o. 
+ * Realiza a operação e retorna ao topo da stack o elemento resultante.
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @returns Stack atualizada
+ */
 void choose_soma (STACK *s){
     if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG)){
         long x = pop_LONG(s);
@@ -32,6 +52,16 @@ void choose_soma (STACK *s){
     } 
 }
 
+/**
+ * \brief Função que realiza a operação subtração.
+ * 
+ * A função verifica o tipo do elemento do topo da stack e retira-o. 
+ * Realiza a operação e retorna ao topo da stack o elemento resultante.
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @returns Stack atualizada
+ */
 void choose_subtrai (STACK *s){
     if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG)){
         long x = pop_LONG(s);
@@ -55,6 +85,16 @@ void choose_subtrai (STACK *s){
     }
 }
 
+/**
+ * \brief Função que realiza a operação multiplicação.
+ * 
+ * A função verifica o tipo do elemento do topo da stack e retira-o. 
+ * Realiza a operação e retorna ao topo da stack o elemento resultante.
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @returns Stack atualizada
+ */
 void choose_multiplica (STACK *s){
     if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG)){
         long x = pop_LONG(s);
@@ -78,6 +118,16 @@ void choose_multiplica (STACK *s){
     }    
 }
 
+/**
+ * \brief Função que realiza a operação divisão.
+ * 
+ * A função verifica o tipo do elemento do topo da stack e retira-o. 
+ * Realiza a operação e retorna ao topo da stack o elemento resultante.
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @returns Stack atualizada
+ */
 void choose_divide (STACK *s){
     if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG)){
         long x = pop_LONG(s);
@@ -101,6 +151,16 @@ void choose_divide (STACK *s){
     }    
 }
 
+/**
+ * \brief Função que realiza a operação de decremento.
+ * 
+ * A função verifica o tipo do elemento do topo da stack e retira-o. 
+ * Realiza a operação e retorna ao topo da stack o elemento resultante.
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @returns Stack atualizada
+ */
 void choose_decrementa (STACK *s){
     DATA elem = top(s);
     TYPE type = elem.type;
@@ -120,6 +180,16 @@ void choose_decrementa (STACK *s){
     }
 }
 
+/**
+ * \brief Função que realiza a operação de incremento.
+ * 
+ * A função verifica o tipo do elemento do topo da stack e retira-o. 
+ * Realiza a operação e retorna ao topo da stack o elemento resultante.
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @returns Stack atualizada
+ */
 void choose_incrementa (STACK *s){
     if (has_type((get_elem(s,0)),LONG)){
         long x = pop_LONG(s);
@@ -135,35 +205,95 @@ void choose_incrementa (STACK *s){
     }  
 }
 
+/**
+ * \brief Função que realiza a operação de conjunção.
+ * 
+ * A função retira o elemento do topo da stack. 
+ * Realiza a operação e retorna ao topo da stack o elemento resultante.
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @returns Stack atualizada
+ */
 void choose_E (STACK *s){
     long x = pop_LONG(s);
     long y = pop_LONG(s);
     push_LONG(s,x&y);
 }
 
+/**
+ * \brief Função que realiza a operação disjunção.
+ * 
+ * A função retira o elemento do topo da stack. 
+ * Realiza a operação e retorna ao topo da stack o elemento resultante.
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @returns Stack atualizada
+ */
 void choose_ou (STACK *s){
     long x = pop_LONG(s);
     long y = pop_LONG(s);
     push_LONG(s,x|y);
 }
 
+/**
+ * \brief Função que realiza a operação módulo.
+ * 
+ * A função retira o elemento do topo da stack.  
+ * Realiza a operação e retorna ao topo da stack o elemento resultante.
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @returns Stack atualizada
+ */
 void choose_modulo (STACK *s){
     long x = pop_LONG(s);
     long y = pop_LONG(s);
     push_LONG(s,y%x);
 }
 
+/**
+ * \brief Função que realiza a operação xor.
+ * 
+ * A função retira o elemento do topo da stack. 
+ * Realiza a operação e retorna ao topo da stack o elemento resultante.
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @returns Stack atualizada
+ */
 void choose_xor (STACK *s){
     long x = pop_LONG(s);
     long y = pop_LONG(s);
     push_LONG(s,x^y);
 }
 
+/**
+ * \brief Função que realiza a operação not.
+ * 
+ * A função retira o elemento do topo da stack.  
+ * Realiza a operação e retorna ao topo da stack o elemento resultante.
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @returns Stack atualizada
+ */
 void choose_not (STACK *s){
     long x = pop_LONG(s);
     push_LONG(s,~x);
 }
 
+/**
+ * \brief Função que realiza a operação potência.
+ * 
+ * A função verifica o tipo do elemento do topo da stack e retira-o. 
+ * Realiza a operação e retorna ao topo da stack o elemento resultante.
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @returns Stack atualizada
+ */
 void choose_potencia (STACK *s){
     if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG)){
         long x = pop_LONG(s);
@@ -187,6 +317,16 @@ void choose_potencia (STACK *s){
     }     
 }
 
+/**
+ * \brief Função que troca a posição dos elementos.
+ * 
+ * A função verifica o tipo do elemento do topo da stack e retira-o. 
+ * Realiza a operação e retorna ao topo da stack os elementos resultantes.
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @returns Stack atualizada.
+ */
 void choose_troca (STACK *s){
     if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG)){
         long x = pop_LONG(s);
@@ -226,6 +366,16 @@ void choose_troca (STACK *s){
     }
 }
 
+/**
+ * \brief Função que roda a posição dos elementos do topo da stack.
+ * 
+ * A função verifica o tipo do elemento do topo da stack e retira-o. 
+ * Realiza a operação e retorna ao topo da stack os elementos resultantes.
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @returns Stack atualizada
+ */
 void choose_roda(STACK *s){
     if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG) && has_type((get_elem(s,2)),LONG)){
         long x = pop_LONG(s);
@@ -285,11 +435,31 @@ void choose_roda(STACK *s){
     }
 }
 
+/**
+ * \brief Função que copia o elemento na n-ésima posição.
+ * 
+ * A função retira o elemento do topo da stack. 
+ * Realiza a operação e retorna ao topo da stack o elemento resultante.
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @returns Stack atualizada
+ */
 void choose_copia (STACK *s){
     long x = pop_LONG(s);
     push(s,get_elem(s,x));
 }    
 
+/**
+ * \brief Função que converte o elemento do topo da stack num char.
+ * 
+ * A função verifica o tipo do elemento do topo da stack e retira-o. 
+ * Realiza a operação e retorna ao topo da stack o elemento resultante.
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @returns Stack atualizada
+ */
 void choose_converteC (STACK *s){
     DATA elem = top(s);
     TYPE type = elem.type;
@@ -306,6 +476,16 @@ void choose_converteC (STACK *s){
     }
 }
 
+/**
+ * \brief Função que converte o elemento do topo da stack num long.
+ * 
+ * A função verifica o tipo do elemento do topo da stack e retira-o. 
+ * Realiza a operação e retorna ao topo da stack o elemento resultante.
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @returns Stack atualizada
+ */
 void choose_converteI (STACK *s){
     DATA elem = top(s);
     TYPE type = elem.type;
@@ -326,6 +506,16 @@ void choose_converteI (STACK *s){
     }
 }
 
+/**
+ * \brief Função que converte o elemento do topo da stack num double.
+ * 
+ * A função verifica o tipo do elemento do topo da stack e retira-o. 
+ * Realiza a operação e retorna ao topo da stack o elemento resultante.
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @returns Stack atualizada
+ */
 void choose_converteF (STACK *s){
     DATA elem = top(s);
     TYPE type = elem.type;
@@ -346,6 +536,12 @@ void choose_converteF (STACK *s){
     }
 }
 
+/**
+ * \brief Função que permite ler a linha seguinte.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
 void choose_L (STACK *s){
     char linha[10240];
     assert( fgets(linha, 10240,stdin) != NULL);
