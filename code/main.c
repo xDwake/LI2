@@ -18,6 +18,7 @@
 #include <string.h>
 #include "parser.h"
 #include "stack.h"
+#include "aux.h"
 
 /**
  * \brief Função Main do programa.

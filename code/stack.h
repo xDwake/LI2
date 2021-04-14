@@ -23,8 +23,6 @@ typedef struct stack {
   int n_elems;
 } STACK;
 
-DATA get_elem(STACK *s,int n);
-
 int has_type(DATA elem, int mask);
 STACK *create_stack();
 void push(STACK *s, DATA elem);

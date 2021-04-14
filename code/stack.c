@@ -33,10 +33,6 @@ DATA top(STACK *s) {
   return s->stack[s->n_elems - 1];
 }
 
-DATA get_elem(STACK *s,int n){
-  return s->stack[s->n_elems - n-1];
-}
-
 int is_empty(STACK *s) {
   return s->n_elems == 0;
 }
