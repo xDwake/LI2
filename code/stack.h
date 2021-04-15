@@ -9,44 +9,50 @@
 #include <assert.h>
 
 /**
-* \brief Enumera os diferentes tipos de dados como potências da base 2.
+* Enumera os diferentes tipos de dados como potências da base 2.
 *
 */
-typedef enum {LONG = 1, DOUBLE = 2, CHAR = 4, STRING = 8} TYPE;
+typedef enum {LONG = 1, /* tipo LONG de valor 2^0*/
+              DOUBLE = 2, /* tipo DOUBLE de valor 2^1*/
+              CHAR = 4,  /* tipo CHAR de valor 2^2*/
+              STRING = 8 /* tipo STRING de valor 2^3*/
+              } TYPE;
 
 /**
-* \brief Máscaras dos tipos.
+*
+* Máscaras do tipo LONG e CHAR.
 *
 */
 #define INTEGER  (LONG | CHAR)
+/**
+*
+* Máscaras do tipo LONG, CHAR e CHAR.
+*
+*/
 #define NUMBER   (INTEGER | DOUBLE)
 
 /**
-* \brief Estrutura que define os tipos de dados aceites pela stack.
+*  Estrutura que define os tipos de dados aceites pela stack.
 *
 */
 typedef struct data {
   TYPE type;
   // Esta parte devia ser transformada numa union mais tarde
-  long LONG;
-  double DOUBLE;
-  char CHAR;
-  char *STRING;
+  long LONG; /* tipo de dados LONG*/
+  double DOUBLE; /* tipo de dados DOUBLE*/
+  char CHAR; /* tipo de dados CHAR*/
+  char *STRING; /* tipo de dados STRING*/
 } DATA;
 
 /**
 *
-* \brief Estrutura stack onde são guardados os elementos
-*
-* @param size Tamanho da stack.
-*
-* @param n_elems Indice do elemento.
+* Estrutura stack onde são guardados os elemento.
 *
 */
 typedef struct stack {
   DATA *stack;
-  int size;
-  int n_elems;
+  int size; /*tamanho da stack*/
+  int n_elems; /* índice do elemento*/
 } STACK;
 
 /**
@@ -69,12 +75,12 @@ int is_empty(STACK *s);
 void print_stack(STACK *s);
 
 /**
- * \brief Função que permite criar uma variante das funções pop e push, restritas a um tipo.
- * 
- * @param _type Tipo do elemento.
- *
- * @param _name Nome do elemento.
- */
+*
+*
+* Permite criar uma variante das funções pop e push, restritas a um tipo.
+* 
+*
+*/
 #define STACK_OPERATION_PROTO(_type, _name)   \
   void push_##_name(STACK *s, _type val);     \
   _type pop_##_name(STACK *s);
