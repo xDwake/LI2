@@ -1,5 +1,5 @@
 /**
- * @file auxiliares.c 
+ * @file auxiliar.c 
  * \brief Funções auxiliares do programa.
  */ 
 #include <stdio.h>
