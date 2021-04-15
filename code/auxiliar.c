@@ -267,7 +267,6 @@ void choose_xor (STACK *s){
  *
  * @param s Estrutura stack onde são guardados os elementos.
  * 
- * @returns Stack atualizada
  */
 void choose_not (STACK *s){
     long x = pop_LONG(s);
