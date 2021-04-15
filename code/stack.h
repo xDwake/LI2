@@ -1,6 +1,6 @@
 /**
  * @file stack.h 
- * \brief Módulo da função stack.
+ * \brief Módulo das funções da stack.
  */ 
  
 #ifndef ___STACK_H___
