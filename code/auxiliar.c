@@ -185,18 +185,22 @@ void choose_decrementa (STACK *s){
  *
  */
 void choose_incrementa (STACK *s){
-    if (has_type((get_elem(s,0)),LONG)){
-        long x = pop_LONG(s);
-        push_LONG(s,x+1);
+    DATA elem = top(s);
+    TYPE type = elem.type;
+    long x; double y; char z;
+    switch(type) {
+      case LONG:
+        x = pop_LONG(s);
+        push_LONG(s,x+1); break;
+      case DOUBLE:
+        y = pop_DOUBLE(s);
+        push_DOUBLE(s,y+1); break;
+      case CHAR:
+        z = pop_CHAR(s);
+        push_CHAR(s,z+1); break;
+      default: 
+        break;  
     }
-    else if(has_type((get_elem(s,0)),DOUBLE)){
-        double x = pop_DOUBLE(s);
-                push_DOUBLE(s,x+1);
-    }
-    else if(has_type((get_elem(s,0)),CHAR)){
-        char x = pop_CHAR(s);
-        push_CHAR(s,x+1);
-    }  
 }
 
 /**
