@@ -1,3 +1,7 @@
+/**
+ * @file auxiliar.h 
+ * \brief Módulo das funções auxiliares.
+ */ 
 #include "stack.h"
 #include <string.h>
 
