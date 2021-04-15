@@ -12,10 +12,10 @@
 * Enumera os diferentes tipos de dados como potências da base 2.
 *
 */
-typedef enum {LONG = 1, /* tipo LONG de valor 2^0*/
-              DOUBLE = 2, /* tipo DOUBLE de valor 2^1*/
-              CHAR = 4,  /* tipo CHAR de valor 2^2*/
-              STRING = 8 /* tipo STRING de valor 2^3*/
+typedef enum {LONG = 1,   /**< tipo LONG de valor 2^0*/
+              DOUBLE = 2, /**< tipo DOUBLE de valor 2^1*/
+              CHAR = 4,   /**< tipo CHAR de valor 2^2*/
+              STRING = 8  /**< tipo STRING de valor 2^3*/
               } TYPE;
 
 /**
@@ -36,12 +36,12 @@ typedef enum {LONG = 1, /* tipo LONG de valor 2^0*/
 *
 */
 typedef struct data {
-  TYPE type;
+  TYPE type;     /**< Tipo dos dados */
   // Esta parte devia ser transformada numa union mais tarde
-  long LONG; /* tipo de dados LONG*/
-  double DOUBLE; /* tipo de dados DOUBLE*/
-  char CHAR; /* tipo de dados CHAR*/
-  char *STRING; /* tipo de dados STRING*/
+  long LONG;     /**< tipo de dados LONG*/
+  double DOUBLE; /**< tipo de dados DOUBLE*/
+  char CHAR;     /**< tipo de dados CHAR*/
+  char *STRING;  /**< tipo de dados STRING*/
 } DATA;
 
 /**
@@ -50,9 +50,9 @@ typedef struct data {
 *
 */
 typedef struct stack {
-  DATA *stack;
-  int size; /*tamanho da stack*/
-  int n_elems; /* índice do elemento*/
+  DATA *stack; /**< estrutura de dados stack*/
+  int size;    /**< tamanho da stack*/
+  int n_elems; /**< índice do elemento*/
 } STACK;
 
 /**
