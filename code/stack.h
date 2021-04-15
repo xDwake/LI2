@@ -26,7 +26,7 @@ typedef enum {LONG = 1, /* tipo LONG de valor 2^0*/
 #define INTEGER  (LONG | CHAR)
 /**
 *
-* Máscaras do tipo LONG, CHAR e CHAR.
+* Máscaras do tipo LONG, CHAR e DOUBLE.
 *
 */
 #define NUMBER   (INTEGER | DOUBLE)
