@@ -7,7 +7,7 @@
 #include <string.h>
 #include "parser.h"
 #include "stack.h"
-#include "auxiliares.h"
+#include "auxiliar.h"
 #include <math.h>
 
 /**
