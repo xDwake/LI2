@@ -43,15 +43,15 @@ void parser (char *line){
                 case ')':
                   choose_incrementa(s); break;
                 case '&':
-                  choose_E(s); break;
+                  push_LONG(s,pop_LONG(s)&pop_LONG(s)); break;
                 case '|':
-                  choose_ou(s); break;
+                  push_LONG(s,pop_LONG(s)|pop_LONG(s)); break;
                 case '%':
                   choose_modulo(s); break;
                 case '^':
-                  choose_xor(s); break;
+                  push_LONG(s,pop_LONG(s)^pop_LONG(s)); break;
                 case '~':
-                  choose_not(s); break;
+                  push_LONG(s,~pop_LONG(s)); break;
                 case '#':
                   choose_potencia(s); break;
                 case '_':
@@ -63,7 +63,7 @@ void parser (char *line){
                 case '@':
                   choose_roda(s); break;
                 case '$':
-                  choose_copia(s); break;
+                  push(s,get_elem(s,pop_LONG(s))); break;
                 case 'c':
                   choose_converteC(s); break;
                 case 'i':

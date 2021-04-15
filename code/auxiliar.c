@@ -30,24 +30,16 @@ DATA get_elem(STACK *s,int n){
  */
 void choose_soma (STACK *s){
     if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG)){
-        long x = pop_LONG(s);
-        long y = pop_LONG(s);
-        push_LONG(s,y+x);
+        push_LONG(s,pop_LONG(s)+pop_LONG(s));
     }
     else if (has_type((get_elem(s,0)),DOUBLE) && has_type((get_elem(s,1)),DOUBLE)){
-        double x = pop_DOUBLE(s);
-        double y = pop_DOUBLE(s);
-        push_DOUBLE(s,y+x);
+        push_DOUBLE(s,pop_DOUBLE(s)+pop_DOUBLE(s));
     }
     else if (has_type((get_elem(s,0)),DOUBLE) && has_type((get_elem(s,1)),LONG)){
-        double x = pop_DOUBLE(s);
-        long y = pop_LONG(s);
-        push_DOUBLE(s,y+x);
+        push_DOUBLE(s,pop_DOUBLE(s)+pop_LONG(s));
     }
     else if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),DOUBLE)){
-        long x = pop_LONG(s);
-        double y = pop_DOUBLE(s);
-        push_DOUBLE(s,y+x);
+        push_DOUBLE(s,pop_LONG(s)+pop_DOUBLE(s));
     } 
 }
 
@@ -63,23 +55,19 @@ void choose_soma (STACK *s){
 void choose_subtrai (STACK *s){
     if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG)){
         long x = pop_LONG(s);
-        long y = pop_LONG(s);
-        push_LONG(s,y-x);
+        push_LONG(s,pop_LONG(s)-x);
     }
     else if (has_type((get_elem(s,0)),DOUBLE) && has_type((get_elem(s,1)),DOUBLE)){
             double x = pop_DOUBLE(s);
-            double y = pop_DOUBLE(s);
-            push_DOUBLE(s,y-x);
+            push_DOUBLE(s,pop_DOUBLE(s)-x);
     }
     else if (has_type((get_elem(s,0)),DOUBLE) && has_type((get_elem(s,1)),LONG)){
             double x = pop_DOUBLE(s);
-            long y = pop_LONG(s);
-            push_DOUBLE(s,y-x);
+            push_DOUBLE(s,pop_LONG(s)-x);
     }
     else if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),DOUBLE)){
             long x = pop_LONG(s);
-            double y = pop_DOUBLE(s);
-            push_DOUBLE(s,y-x);
+            push_DOUBLE(s,pop_DOUBLE(s)-x);
     }
 }
 
@@ -94,24 +82,16 @@ void choose_subtrai (STACK *s){
  */
 void choose_multiplica (STACK *s){
     if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG)){
-        long x = pop_LONG(s);
-        long y = pop_LONG(s);
-        push_LONG(s,y*x);
+        push_LONG(s,pop_LONG(s)*pop_LONG(s));
     }
     else if (has_type((get_elem(s,0)),DOUBLE) && has_type((get_elem(s,1)),DOUBLE)){
-            double x = pop_DOUBLE(s);
-            double y = pop_DOUBLE(s);
-            push_DOUBLE(s,y*x);
+            push_DOUBLE(s,pop_DOUBLE(s)*pop_DOUBLE(s));
     }
     else if (has_type((get_elem(s,0)),DOUBLE) && has_type((get_elem(s,1)),LONG)){
-            double x = pop_DOUBLE(s);
-            long y = pop_LONG(s);
-            push_DOUBLE(s,y*x);
+            push_DOUBLE(s,pop_LONG(s)*pop_DOUBLE(s));
     }
     else if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),DOUBLE)){
-            long x = pop_LONG(s);
-            double y = pop_DOUBLE(s);
-            push_DOUBLE(s,y*x);
+            push_DOUBLE(s,pop_DOUBLE(s)*pop_LONG(s));
     }    
 }
 
@@ -125,25 +105,21 @@ void choose_multiplica (STACK *s){
  * 
  */
 void choose_divide (STACK *s){
-    if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG)){
+  if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG)){
         long x = pop_LONG(s);
-        long y = pop_LONG(s);
-        push_LONG(s,y/x);
+        push_LONG(s,pop_LONG(s)/x);
     }
     else if (has_type((get_elem(s,0)),DOUBLE) && has_type((get_elem(s,1)),DOUBLE)){
             double x = pop_DOUBLE(s);
-            double y = pop_DOUBLE(s);
-            push_DOUBLE(s,y/x);
+            push_DOUBLE(s,pop_DOUBLE(s)/x);
     }
     else if (has_type((get_elem(s,0)),DOUBLE) && has_type((get_elem(s,1)),LONG)){
             double x = pop_DOUBLE(s);
-            long y = pop_LONG(s);
-            push_DOUBLE(s,y/x);
+            push_DOUBLE(s,pop_LONG(s)/x);
     }
     else if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),DOUBLE)){
             long x = pop_LONG(s);
-            double y = pop_DOUBLE(s);
-            push_DOUBLE(s,y/x);
+            push_DOUBLE(s,pop_DOUBLE(s)/x);
     }    
 }
 
@@ -159,17 +135,13 @@ void choose_divide (STACK *s){
 void choose_decrementa (STACK *s){
     DATA elem = top(s);
     TYPE type = elem.type;
-    long x; double y; char z;
     switch(type) {
       case LONG:
-        x = pop_LONG(s);
-        push_LONG(s,x-1); break;
+        push_LONG(s,pop_LONG(s)-1); break;
       case DOUBLE:
-        y = pop_DOUBLE(s);
-        push_DOUBLE(s,y-1); break;
+        push_DOUBLE(s,pop_DOUBLE(s)-1); break;
       case CHAR:
-        z = pop_CHAR(s);
-        push_CHAR(s,z-1); break;
+        push_CHAR(s,pop_CHAR(s)-1); break;
       default: 
         break;  
     }
@@ -187,50 +159,16 @@ void choose_decrementa (STACK *s){
 void choose_incrementa (STACK *s){
     DATA elem = top(s);
     TYPE type = elem.type;
-    long x; double y; char z;
     switch(type) {
       case LONG:
-        x = pop_LONG(s);
-        push_LONG(s,x+1); break;
+        push_LONG(s,pop_LONG(s)+1); break;
       case DOUBLE:
-        y = pop_DOUBLE(s);
-        push_DOUBLE(s,y+1); break;
+        push_DOUBLE(s,pop_DOUBLE(s)+1); break;
       case CHAR:
-        z = pop_CHAR(s);
-        push_CHAR(s,z+1); break;
+        push_CHAR(s,pop_CHAR(s)+1); break;
       default: 
         break;  
     }
-}
-
-/**
- * \brief Função que realiza a operação de conjunção.
- * 
- * A função retira o elemento do topo da stack. 
- * Realiza a operação e retorna ao topo da stack o elemento resultante.
- *
- * @param s Estrutura stack onde são guardados os elementos.
- * 
- */
-void choose_E (STACK *s){
-    long x = pop_LONG(s);
-    long y = pop_LONG(s);
-    push_LONG(s,x&y);
-}
-
-/**
- * \brief Função que realiza a operação disjunção.
- * 
- * A função retira o elemento do topo da stack. 
- * Realiza a operação e retorna ao topo da stack o elemento resultante.
- *
- * @param s Estrutura stack onde são guardados os elementos.
- * 
- */
-void choose_ou (STACK *s){
-    long x = pop_LONG(s);
-    long y = pop_LONG(s);
-    push_LONG(s,x|y);
 }
 
 /**
@@ -244,37 +182,7 @@ void choose_ou (STACK *s){
  */
 void choose_modulo (STACK *s){
     long x = pop_LONG(s);
-    long y = pop_LONG(s);
-    push_LONG(s,y%x);
-}
-
-/**
- * \brief Função que realiza a operação xor.
- * 
- * A função retira o elemento do topo da stack. 
- * Realiza a operação e retorna ao topo da stack o elemento resultante.
- *
- * @param s Estrutura stack onde são guardados os elementos.
- * 
- */
-void choose_xor (STACK *s){
-    long x = pop_LONG(s);
-    long y = pop_LONG(s);
-    push_LONG(s,x^y);
-}
-
-/**
- * \brief Função que realiza a operação not.
- * 
- * A função retira o elemento do topo da stack.  
- * Realiza a operação e retorna ao topo da stack o elemento resultante.
- *
- * @param s Estrutura stack onde são guardados os elementos.
- * 
- */
-void choose_not (STACK *s){
-    long x = pop_LONG(s);
-    push_LONG(s,~x);
+    push_LONG(s,pop_LONG(s)%x);
 }
 
 /**
@@ -289,23 +197,19 @@ void choose_not (STACK *s){
 void choose_potencia (STACK *s){
     if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG)){
         long x = pop_LONG(s);
-        long y = pop_LONG(s);
-        push_LONG(s,pow(y,x));
+        push_LONG(s,pow(pop_LONG(s),x));
     }
     else if (has_type((get_elem(s,0)),DOUBLE) && has_type((get_elem(s,1)),DOUBLE)){
             double x = pop_DOUBLE(s);
-            double y = pop_DOUBLE(s);
-            push_DOUBLE(s,pow(y,x));
+            push_DOUBLE(s,pow(pop_DOUBLE(s),x));
     }
     else if (has_type((get_elem(s,0)),DOUBLE) && has_type((get_elem(s,1)),LONG)){
             double x = pop_DOUBLE(s);
-            long y = pop_LONG(s);
-            push_DOUBLE(s,pow(y,x));
+            push_DOUBLE(s,pow(pop_LONG(s),x));
     }
     else if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),DOUBLE)){
             long x = pop_LONG(s);
-            double y = pop_DOUBLE(s);
-            push_DOUBLE(s,pow(y,x));
+            push_DOUBLE(s,pow(pop_DOUBLE(s),x));
     }     
 }
 
@@ -344,20 +248,6 @@ void choose_roda(STACK *s){
 }
 
 /**
- * \brief Função que copia o elemento na n-ésima posição.
- * 
- * A função retira o elemento do topo da stack. 
- * Realiza a operação e retorna ao topo da stack o elemento resultante.
- *
- * @param s Estrutura stack onde são guardados os elementos.
- * 
- */
-void choose_copia (STACK *s){
-    long x = pop_LONG(s);
-    push(s,get_elem(s,x));
-}    
-
-/**
  * \brief Função que converte o elemento do topo da stack num char.
  * 
  * A função verifica o tipo do elemento do topo da stack e retira-o. 
@@ -369,14 +259,11 @@ void choose_copia (STACK *s){
 void choose_converteC (STACK *s){
     DATA elem = top(s);
     TYPE type = elem.type;
-    long x; double y;
     switch(type) {
       case LONG:
-        x = pop_LONG(s);
-        push_CHAR (s,(char)x); break;
+        push_CHAR (s,(char)pop_LONG(s)); break;
       case DOUBLE:
-        y = pop_DOUBLE(s);
-        push_CHAR (s,(char)y); break;
+        push_CHAR (s,(char)pop_DOUBLE(s)); break;
       default:
         break;  
     }
@@ -394,18 +281,13 @@ void choose_converteC (STACK *s){
 void choose_converteI (STACK *s){
     DATA elem = top(s);
     TYPE type = elem.type;
-    char x; double y; char *z; int w;
     switch(type) {
       case CHAR:
-        x = pop_CHAR(s);
-        push_LONG (s,(long)x); break;
+        push_LONG (s,(long)pop_CHAR(s)); break;
       case DOUBLE:
-        y = pop_DOUBLE(s);
-        push_LONG (s,(long)y); break;
+        push_LONG (s,(long)pop_DOUBLE(s)); break;
       case STRING:
-        z = pop_STRING(s);
-        w = atol(z);
-        push_LONG(s,w); break;
+        push_LONG(s,atol(pop_STRING(s))); break;
       default: 
         break;   
     }
@@ -423,18 +305,13 @@ void choose_converteI (STACK *s){
 void choose_converteF (STACK *s){
     DATA elem = top(s);
     TYPE type = elem.type;
-    char x; int y; char *z; double w;
     switch(type) {
       case CHAR:
-        x = pop_CHAR(s);
-        push_DOUBLE (s,(double)x); break;
+        push_DOUBLE (s,(double)pop_CHAR(s)); break;
       case LONG:
-        y = pop_LONG(s);
-        push_DOUBLE(s,(double)y); break;
+        push_DOUBLE(s,(double)pop_LONG(s)); break;
       case STRING:
-        z = pop_STRING(s);
-        w = atof(z);
-        push_DOUBLE(s,w);break;
+        push_DOUBLE(s,atof(pop_STRING(s)));break;
       default:
         break;    
     }
