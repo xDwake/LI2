@@ -11,7 +11,7 @@
  * 
  * @param elem Elemento a ser verificado.
  *
- * @param mask Mask que permite verificar o tipo do elemento.
+ * @param mask Máscara que permite verificar o tipo do elemento.
  *
  * @returns 1 se o tipo do elemento corresponder à mask.
  */ 
