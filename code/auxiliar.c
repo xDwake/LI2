@@ -27,7 +27,6 @@ DATA get_elem(STACK *s,int n){
  *
  * @param s Estrutura stack onde são guardados os elementos.
  * 
- * @returns Stack atualizada
  */
 void choose_soma (STACK *s){
     if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG)){
@@ -60,7 +59,6 @@ void choose_soma (STACK *s){
  *
  * @param s Estrutura stack onde são guardados os elementos.
  * 
- * @returns Stack atualizada
  */
 void choose_subtrai (STACK *s){
     if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG)){
@@ -93,7 +91,6 @@ void choose_subtrai (STACK *s){
  *
  * @param s Estrutura stack onde são guardados os elementos.
  * 
- * @returns Stack atualizada
  */
 void choose_multiplica (STACK *s){
     if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG)){
@@ -126,7 +123,6 @@ void choose_multiplica (STACK *s){
  *
  * @param s Estrutura stack onde são guardados os elementos.
  * 
- * @returns Stack atualizada
  */
 void choose_divide (STACK *s){
     if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG)){
@@ -159,7 +155,6 @@ void choose_divide (STACK *s){
  *
  * @param s Estrutura stack onde são guardados os elementos.
  * 
- * @returns Stack atualizada
  */
 void choose_decrementa (STACK *s){
     DATA elem = top(s);
@@ -187,8 +182,7 @@ void choose_decrementa (STACK *s){
  * Realiza a operação e retorna ao topo da stack o elemento resultante.
  *
  * @param s Estrutura stack onde são guardados os elementos.
- * 
- * @returns Stack atualizada
+ *
  */
 void choose_incrementa (STACK *s){
     if (has_type((get_elem(s,0)),LONG)){
@@ -213,7 +207,6 @@ void choose_incrementa (STACK *s){
  *
  * @param s Estrutura stack onde são guardados os elementos.
  * 
- * @returns Stack atualizada
  */
 void choose_E (STACK *s){
     long x = pop_LONG(s);
@@ -229,7 +222,6 @@ void choose_E (STACK *s){
  *
  * @param s Estrutura stack onde são guardados os elementos.
  * 
- * @returns Stack atualizada
  */
 void choose_ou (STACK *s){
     long x = pop_LONG(s);
@@ -244,8 +236,7 @@ void choose_ou (STACK *s){
  * Realiza a operação e retorna ao topo da stack o elemento resultante.
  *
  * @param s Estrutura stack onde são guardados os elementos.
- * 
- * @returns Stack atualizada
+ *
  */
 void choose_modulo (STACK *s){
     long x = pop_LONG(s);
@@ -261,7 +252,6 @@ void choose_modulo (STACK *s){
  *
  * @param s Estrutura stack onde são guardados os elementos.
  * 
- * @returns Stack atualizada
  */
 void choose_xor (STACK *s){
     long x = pop_LONG(s);
@@ -292,7 +282,6 @@ void choose_not (STACK *s){
  *
  * @param s Estrutura stack onde são guardados os elementos.
  * 
- * @returns Stack atualizada
  */
 void choose_potencia (STACK *s){
     if (has_type((get_elem(s,0)),LONG) && has_type((get_elem(s,1)),LONG)){
@@ -325,7 +314,6 @@ void choose_potencia (STACK *s){
  *
  * @param s Estrutura stack onde são guardados os elementos.
  * 
- * @returns Stack atualizada.
  */
 void choose_troca (STACK *s){
         DATA x = pop (s);
@@ -342,7 +330,6 @@ void choose_troca (STACK *s){
  *
  * @param s Estrutura stack onde são guardados os elementos.
  * 
- * @returns Stack atualizada
  */
 void choose_roda(STACK *s){
         DATA x = pop (s);
@@ -361,7 +348,6 @@ void choose_roda(STACK *s){
  *
  * @param s Estrutura stack onde são guardados os elementos.
  * 
- * @returns Stack atualizada
  */
 void choose_copia (STACK *s){
     long x = pop_LONG(s);
@@ -376,7 +362,6 @@ void choose_copia (STACK *s){
  *
  * @param s Estrutura stack onde são guardados os elementos.
  * 
- * @returns Stack atualizada
  */
 void choose_converteC (STACK *s){
     DATA elem = top(s);
@@ -402,7 +387,6 @@ void choose_converteC (STACK *s){
  *
  * @param s Estrutura stack onde são guardados os elementos.
  * 
- * @returns Stack atualizada
  */
 void choose_converteI (STACK *s){
     DATA elem = top(s);
@@ -432,7 +416,6 @@ void choose_converteI (STACK *s){
  *
  * @param s Estrutura stack onde são guardados os elementos.
  * 
- * @returns Stack atualizada
  */
 void choose_converteF (STACK *s){
     DATA elem = top(s);
