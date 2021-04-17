@@ -329,7 +329,15 @@ void choose_L (STACK *s){
     assert( linha[strlen(linha)-1] == '\n');
     push_STRING(s,&linha[0]);
 }
-// e& E (com shortcut)
+
+/**
+ * \brief Função que testa a disjunção entre dois elementos.
+ *
+ * Função correspondente ao "E" lógico mas com shortcut. 
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
 void short_E (STACK *s) {
   if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),LONG)){
     long x = pop_LONG (s);
@@ -358,6 +366,14 @@ void short_E (STACK *s) {
   }
 }
 
+/**
+ * \brief Função que testa a conjunção entre dois elementos.
+ *
+ * Função correspondente ao "Ou" lógico mas com shortcut. 
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
 void short_OU (STACK *s) {
   if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),LONG)){
     long x = pop_LONG (s);
@@ -388,8 +404,15 @@ void short_OU (STACK *s) {
          else push_LONG(s,0);
   }
 }
-/*e< Coloca o menor dos 2 valores na stack*/
 
+/**
+ * \brief Função que procura o menor entre dois elementos.
+ *
+ * A função compara os dois elementos e coloca o menor na stack.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
 void  short_minor (STACK *s) {
  if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),LONG)){
     long x = pop_LONG (s);
@@ -418,6 +441,14 @@ void  short_minor (STACK *s) {
   }
 }
 
+/**
+ * \brief Função que procura o maior entre dois elementos.
+ *
+ * A função compara os dois elementos e coloca o maior na stack.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
 void short_higher (STACK *s) {
   if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),LONG)){
     long x = pop_LONG (s);
@@ -446,6 +477,12 @@ void short_higher (STACK *s) {
   }
 }
 
+/**
+ * \brief Função correspondente à condição if-then-else.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
 void if_then_else (STACK *s) {
   DATA x = pop(s);
   DATA y = pop(s);
@@ -474,6 +511,12 @@ void if_then_else (STACK *s) {
   } 
 }
 
+/**
+ * \brief Função que testa a igualdade entre dois elementos.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
 void choose_igual (STACK *s){
    if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),LONG)){
     long x = pop_LONG (s);
@@ -502,6 +545,12 @@ void choose_igual (STACK *s){
   }
 }
 
+/**
+ * \brief Função que testa se um elemento é menor que outro.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
 void choose_menor (STACK *s){
   if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),LONG)){
     long x = pop_LONG (s);
@@ -530,6 +579,12 @@ void choose_menor (STACK *s){
   } 
 }
 
+/**
+ * \brief Função que testa se um elemento é maior que outro.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
 void choose_maior (STACK *s){
   if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),LONG)){
     long x = pop_LONG (s);
@@ -558,6 +613,12 @@ void choose_maior (STACK *s){
   } 
 }
 
+/**
+ * \brief Função corresponte à negação.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
 void choose_nao(STACK *s){
     DATA elem = pop(s);
     TYPE type = elem.type;
