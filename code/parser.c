@@ -30,7 +30,20 @@ void parser (char *line){
         }
         else if(strcmp (token, "-") == 0) {
           choose_subtrai (s);
-        }   
+        }
+        else if(strcmp(token,"e|") == 0) {
+          short_OU (s);
+        } 
+        else if(strcmp(token,"e&") == 0) {
+          short_E (s);
+        } 
+        else if(strcmp(token,"e>") == 0) {
+          short_higher (s);
+        } 
+        else if(strcmp(token,"e<") == 0) {
+          short_minor (s);
+        } 
+
         else switch (*token){
                 case '+':
                   choose_soma(s); break;
