@@ -329,3 +329,144 @@ void choose_L (STACK *s){
     assert( linha[strlen(linha)-1] == '\n');
     push_STRING(s,&linha[0]);
 }
+// e& E (com shortcut)
+void short_E (STACK *s) {
+  if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),LONG)){
+    long x = pop_LONG (s);
+    long y = pop_LONG (s);
+    if (x != 0 && y != 0) push_LONG (s,1);
+    else push_LONG (s,0);
+  }
+  else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),DOUBLE)){
+    double x = pop_DOUBLE (s);
+    double y = pop_DOUBLE (s);
+    if (x != 0 && y != 0) push_LONG (s,1);
+    else push_LONG (s,0);
+  }
+  else if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),DOUBLE)){
+    long x = pop_LONG (s);
+    double y = pop_DOUBLE (s);
+    if (x != 0 && y != 0) push_LONG (s,1);
+    else push_LONG (s,0);
+
+  }
+  else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),LONG)){
+    double x = pop_DOUBLE (s);
+    long y = pop_LONG (s);
+    if (x != 0 && y != 0) push_LONG (s,1);
+    else push_LONG (s,0);
+  }
+}
+
+void short_OU (STACK *s) {
+  if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),LONG)){
+    long x = pop_LONG (s);
+    long y = pop_LONG (s);
+    if (x != 0 || y != 0) push_LONG (s,1);
+    else push_LONG (s,0);
+  }
+  else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),DOUBLE)){
+    double x = pop_LONG (s);
+    double y = pop_LONG (s);
+    if (x != 0 || y != 0) push_DOUBLE (s,1);
+    else push_DOUBLE (s,0);
+  } 
+   else if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),DOUBLE)){
+    long x = pop_LONG (s);
+    double y = pop_DOUBLE (s);
+    if (x != 0 || y != 0) push_LONG (s,1);
+    else push_LONG (s,0);
+
+  }
+  else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),LONG)){
+    double x = pop_DOUBLE (s);
+    long y = pop_LONG (s);
+    if (x != 0 || y != 0) push_LONG (s,1);
+    else push_LONG (s,0);
+  }
+}
+/*e< Coloca o menor dos 2 valores na stack*/
+
+void  short_minor (STACK *s) {
+ if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),LONG)){
+    long x = pop_LONG (s);
+    long y = pop_LONG (s);
+    if (x < y) push_LONG (s,x);
+    else if (x > y) push_LONG (s,y);
+    
+  }
+  else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),DOUBLE)){
+    double x = pop_LONG (s);
+    double y = pop_LONG (s);
+    if (x < y) push_DOUBLE (s,x);
+    else if (x > y) push_DOUBLE (s,y);
+  } 
+   else if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),DOUBLE)){
+    long x = pop_LONG (s);
+    double y = pop_DOUBLE (s);
+    if (x < y) push_LONG (s,x);
+    else if (x > y) push_DOUBLE (s,y);
+  }
+  else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),LONG)){
+    double x = pop_DOUBLE (s);
+    long y = pop_LONG (s);
+    if (x < y) push_DOUBLE (s,x);
+    else if (x > y) push_LONG (s,y);
+  }
+}
+
+void short_higher (STACK *s) {
+  if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),LONG)){
+    long x = pop_LONG (s);
+    long y = pop_LONG (s);
+    if (x > y) push_LONG (s,x);
+    else if (x < y) push_LONG (s,y);
+    
+  }
+  else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),DOUBLE)){
+    double x = pop_LONG (s);
+    double y = pop_LONG (s);
+    if (x > y) push_DOUBLE (s,x);
+    else if (x < y) push_DOUBLE (s,y);
+  } 
+   else if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),DOUBLE)){
+    long x = pop_LONG (s);
+    double y = pop_DOUBLE (s);
+    if (x > y) push_LONG (s,x);
+    else if (x < y) push_DOUBLE (s,y);
+  }
+  else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),LONG)){
+    double x = pop_DOUBLE (s);
+    long y = pop_LONG (s);
+    if (x > y) push_DOUBLE (s,x);
+    else if (x < y) push_LONG (s,y);
+  }
+}
+
+void if_then_else (STACK *s) {
+  DATA x = pop(s);
+  DATA y = pop(s);
+  DATA cond = pop(s);
+  switch (cond.type){
+    case CHAR:{ 
+      if (cond.CHAR != 0) push (s,y);
+      else push (s,x);
+      break;
+    } 
+    case LONG:{
+      if (cond.LONG != 0) push (s,y);
+      else push (s,x);
+      break;
+    } 
+    case DOUBLE:{
+      if (cond.DOUBLE != 0) push (s,y);
+      else push(s,x);
+      break;
+    }
+    case STRING:{ 
+      if (strcmp(cond.STRING, "")!= 0) push (s,y);
+      else push (s,x);
+      break;
+    }   
+  } 
+}
