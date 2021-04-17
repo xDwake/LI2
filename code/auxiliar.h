@@ -21,3 +21,7 @@ void choose_converteC (STACK *s);
 void choose_converteI (STACK *s);
 void choose_converteF (STACK *s);
 void choose_L (STACK *s);
+void short_OU (STACK *s);
+void short_E (STACK *s);
+void short_minor (STACK *s);
+void short_higher (STACK *s);
