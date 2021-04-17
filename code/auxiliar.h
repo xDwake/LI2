@@ -25,3 +25,8 @@ void short_OU (STACK *s);
 void short_E (STACK *s);
 void short_minor (STACK *s);
 void short_higher (STACK *s);
+void if_then_else (STACK *s);
+void choose_igual (STACK *s);
+void choose_menor (STACK *s);
+void choose_maior (STACK *s);
+void choose_nao(STACK *s);

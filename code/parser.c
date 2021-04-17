@@ -43,7 +43,6 @@ void parser (char *line){
         else if(strcmp(token,"e<") == 0) {
           short_minor (s);
         } 
-
         else switch (*token){
                 case '+':
                   choose_soma(s); break;
@@ -85,6 +84,16 @@ void parser (char *line){
                   choose_converteF(s); break;
                 case 'l':
                   choose_L(s); break;
+                case '?':
+                  if_then_else(s); break;
+                case '=':
+                  choose_igual(s); break;
+                case '<':
+                  choose_menor(s); break;
+                case '>':
+                  choose_maior(s); break;
+                case '!':
+                  choose_nao(s); break;            
                 default: 
                   push_DOUBLE(s,val_d); break;    
         }

@@ -334,26 +334,26 @@ void short_E (STACK *s) {
   if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),LONG)){
     long x = pop_LONG (s);
     long y = pop_LONG (s);
-    if (x != 0 && y != 0) push_LONG (s,1);
+    if (x != 0 && y != 0) push_LONG (s,x);
     else push_LONG (s,0);
   }
   else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),DOUBLE)){
     double x = pop_DOUBLE (s);
     double y = pop_DOUBLE (s);
-    if (x != 0 && y != 0) push_LONG (s,1);
+    if (x != 0 && y != 0) push_DOUBLE (s,x);
     else push_LONG (s,0);
   }
   else if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),DOUBLE)){
     long x = pop_LONG (s);
     double y = pop_DOUBLE (s);
-    if (x != 0 && y != 0) push_LONG (s,1);
+    if (x != 0 && y != 0) push_LONG (s,x);
     else push_LONG (s,0);
 
   }
   else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),LONG)){
     double x = pop_DOUBLE (s);
     long y = pop_LONG (s);
-    if (x != 0 && y != 0) push_LONG (s,1);
+    if (x != 0 && y != 0) push_DOUBLE (s,x);
     else push_LONG (s,0);
   }
 }
@@ -362,27 +362,30 @@ void short_OU (STACK *s) {
   if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),LONG)){
     long x = pop_LONG (s);
     long y = pop_LONG (s);
-    if (x != 0 || y != 0) push_LONG (s,1);
-    else push_LONG (s,0);
+    if (y != 0) push_LONG (s,y);
+    else if (x!=0) push_LONG (s,x);
+         else push_LONG(s,0); 
   }
   else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),DOUBLE)){
-    double x = pop_LONG (s);
-    double y = pop_LONG (s);
-    if (x != 0 || y != 0) push_DOUBLE (s,1);
-    else push_DOUBLE (s,0);
+    double x = pop_DOUBLE (s);
+    double y = pop_DOUBLE (s);
+    if (y != 0) push_LONG (s,y);
+    else if (x!=0) push_LONG (s,x);
+         else push_LONG(s,0);
   } 
    else if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),DOUBLE)){
     long x = pop_LONG (s);
     double y = pop_DOUBLE (s);
-    if (x != 0 || y != 0) push_LONG (s,1);
-    else push_LONG (s,0);
-
+    if (y != 0) push_LONG (s,y);
+    else if (x!=0) push_LONG (s,x);
+         else push_LONG(s,0);
   }
   else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),LONG)){
     double x = pop_DOUBLE (s);
     long y = pop_LONG (s);
-    if (x != 0 || y != 0) push_LONG (s,1);
-    else push_LONG (s,0);
+    if (y != 0) push_LONG (s,y);
+    else if (x!=0) push_LONG (s,x);
+         else push_LONG(s,0);
   }
 }
 /*e< Coloca o menor dos 2 valores na stack*/
@@ -392,26 +395,26 @@ void  short_minor (STACK *s) {
     long x = pop_LONG (s);
     long y = pop_LONG (s);
     if (x < y) push_LONG (s,x);
-    else if (x > y) push_LONG (s,y);
+    else push_LONG (s,y);
     
   }
   else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),DOUBLE)){
     double x = pop_LONG (s);
     double y = pop_LONG (s);
     if (x < y) push_DOUBLE (s,x);
-    else if (x > y) push_DOUBLE (s,y);
+    else push_DOUBLE (s,y);
   } 
    else if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),DOUBLE)){
     long x = pop_LONG (s);
     double y = pop_DOUBLE (s);
     if (x < y) push_LONG (s,x);
-    else if (x > y) push_DOUBLE (s,y);
+    else push_DOUBLE (s,y);
   }
   else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),LONG)){
     double x = pop_DOUBLE (s);
     long y = pop_LONG (s);
     if (x < y) push_DOUBLE (s,x);
-    else if (x > y) push_LONG (s,y);
+    else push_LONG (s,y);
   }
 }
 
@@ -420,26 +423,26 @@ void short_higher (STACK *s) {
     long x = pop_LONG (s);
     long y = pop_LONG (s);
     if (x > y) push_LONG (s,x);
-    else if (x < y) push_LONG (s,y);
+    else push_LONG (s,y);
     
   }
   else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),DOUBLE)){
-    double x = pop_LONG (s);
-    double y = pop_LONG (s);
+    double x = pop_DOUBLE(s);
+    double y = pop_DOUBLE (s);
     if (x > y) push_DOUBLE (s,x);
-    else if (x < y) push_DOUBLE (s,y);
+    else push_DOUBLE (s,y);
   } 
    else if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),DOUBLE)){
     long x = pop_LONG (s);
     double y = pop_DOUBLE (s);
     if (x > y) push_LONG (s,x);
-    else if (x < y) push_DOUBLE (s,y);
+    else push_DOUBLE (s,y);
   }
   else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),LONG)){
     double x = pop_DOUBLE (s);
     long y = pop_LONG (s);
     if (x > y) push_DOUBLE (s,x);
-    else if (x < y) push_LONG (s,y);
+    else push_LONG (s,y);
   }
 }
 
@@ -469,4 +472,109 @@ void if_then_else (STACK *s) {
       break;
     }   
   } 
+}
+
+void choose_igual (STACK *s){
+   if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),LONG)){
+    long x = pop_LONG (s);
+    long y = pop_LONG (s);
+    if (x==y) push_LONG (s,1);
+    else push_LONG(s,0);
+    
+  }
+  else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),DOUBLE)){
+    double x = pop_DOUBLE (s);
+    double y = pop_DOUBLE (s);
+    if (x==y) push_LONG (s,1);
+    else push_LONG(s,0);
+  } 
+   else if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),DOUBLE)){
+    long x = pop_LONG (s);
+    double y = pop_DOUBLE (s);
+    if (x==y) push_LONG (s,1);
+    else push_LONG (s,0);
+  }
+  else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),LONG)){
+    double x = pop_DOUBLE (s);
+    long y = pop_LONG (s);
+    if (x==y) push_LONG(s,1);
+    else push_LONG(s,0);
+  }
+}
+
+void choose_menor (STACK *s){
+  if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),LONG)){
+    long x = pop_LONG (s);
+    long y = pop_LONG (s);
+    if (y<x) push_LONG (s,1);
+    else push_LONG(s,0);
+    
+  }
+  else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),DOUBLE)){
+    double x = pop_DOUBLE (s);
+    double y = pop_DOUBLE (s);
+    if (y<x) push_LONG (s,1);
+    else push_LONG(s,0);
+  } 
+   else if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),DOUBLE)){
+    long x = pop_LONG (s);
+    double y = pop_DOUBLE (s);
+    if (y<x) push_LONG (s,1);
+    else push_LONG (s,0);
+  }
+  else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),LONG)){
+    double x = pop_DOUBLE (s);
+    long y = pop_LONG (s);
+    if (y>x) push_LONG(s,1);
+    else push_LONG(s,0);
+  } 
+}
+
+void choose_maior (STACK *s){
+  if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),LONG)){
+    long x = pop_LONG (s);
+    long y = pop_LONG (s);
+    if (y>x) push_LONG (s,1);
+    else push_LONG(s,0);
+    
+  }
+  else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),DOUBLE)){
+    double x = pop_DOUBLE (s);
+    double y = pop_DOUBLE (s);
+    if (y>x) push_LONG (s,1);
+    else push_LONG(s,0);
+  } 
+   else if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),DOUBLE)){
+    long x = pop_LONG (s);
+    double y = pop_DOUBLE (s);
+    if (y>x) push_LONG (s,1);
+    else push_LONG (s,0);
+  }
+  else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),LONG)){
+    double x = pop_DOUBLE (s);
+    long y = pop_LONG (s);
+    if (y>x) push_LONG(s,1);
+    else push_LONG(s,0);
+  } 
+}
+
+void choose_nao(STACK *s){
+    DATA elem = pop(s);
+    TYPE type = elem.type;
+    switch(type) {
+      case CHAR:
+        if(elem.CHAR !=0) push_LONG(s,0);
+        else push_LONG(s,1); 
+        break;
+      case LONG:
+        if(elem.LONG !=0) push_LONG(s,0);
+        else push_LONG(s,1); 
+        break;
+      case DOUBLE:
+        if(elem.DOUBLE !=0) push_LONG(s,0);
+        else push_LONG(s,1); 
+        break;
+      default:
+        break;    
+    } 
 }
