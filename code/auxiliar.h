@@ -30,3 +30,10 @@ void choose_igual (STACK *s);
 void choose_menor (STACK *s);
 void choose_maior (STACK *s);
 void choose_nao(STACK *s);
+
+
+
+void fill_var(STACK *var);
+void replace_elem(STACK *s, STACK *var, int x);
+void choose_letter(STACK *s, STACK*var, int x);
+int checks_type(STACK *s);
