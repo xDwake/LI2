@@ -29,8 +29,7 @@ DATA get_elem(STACK *s,int n){
  * 
  */
 void choose_soma (STACK *s){
-  int x = checks_type(s);
-  switch(x){
+  switch(checks_type(s)){
     case 0:
       push_LONG(s,pop_LONG(s)+pop_LONG(s)); break;
     case 1:
@@ -54,8 +53,7 @@ void choose_soma (STACK *s){
  * 
  */
 void choose_subtrai (STACK *s){
-  int x = checks_type(s);
-  switch(x){
+  switch(checks_type(s)){
     case 0: ;
       long y=pop_LONG(s); push_LONG(s,pop_LONG(s)-y);
       break;
@@ -83,8 +81,7 @@ void choose_subtrai (STACK *s){
  * 
  */
 void choose_multiplica (STACK *s){
-  int x = checks_type(s);
-  switch(x){
+  switch(checks_type(s)){
     case 0:
       push_LONG(s,pop_LONG(s)*pop_LONG(s)); break;
     case 1:
@@ -108,8 +105,7 @@ void choose_multiplica (STACK *s){
  * 
  */
 void choose_divide (STACK *s){
-  int x = checks_type(s);
-  switch(x){
+  switch(checks_type(s)){
     case 0: ;
       long y=pop_LONG(s); push_LONG(s,pop_LONG(s)/y);
       break;
@@ -137,9 +133,7 @@ void choose_divide (STACK *s){
  * 
  */
 void choose_decrementa (STACK *s){
-    DATA elem = top(s);
-    TYPE type = elem.type;
-    switch(type) {
+    switch(top(s).type) {
       case LONG:
         push_LONG(s,pop_LONG(s)-1); break;
       case DOUBLE:
@@ -161,9 +155,7 @@ void choose_decrementa (STACK *s){
  *
  */
 void choose_incrementa (STACK *s){
-    DATA elem = top(s);
-    TYPE type = elem.type;
-    switch(type) {
+    switch(top(s).type) {
       case LONG:
         push_LONG(s,pop_LONG(s)+1); break;
       case DOUBLE:
@@ -199,8 +191,7 @@ void choose_modulo (STACK *s){
  * 
  */
 void choose_potencia (STACK *s){
-  int x = checks_type(s);
-  switch(x){
+  switch(checks_type(s)){
     case 0: ;
       long y=pop_LONG(s); push_LONG(s,pow(pop_LONG(s),y));
       break;
@@ -262,9 +253,7 @@ void choose_roda(STACK *s){
  * 
  */
 void choose_converteC (STACK *s){
-    DATA elem = top(s);
-    TYPE type = elem.type;
-    switch(type) {
+    switch(top(s).type) {
       case LONG:
         push_CHAR (s,(char)pop_LONG(s)); break;
       case DOUBLE:
@@ -284,9 +273,7 @@ void choose_converteC (STACK *s){
  * 
  */
 void choose_converteI (STACK *s){
-    DATA elem = top(s);
-    TYPE type = elem.type;
-    switch(type) {
+    switch(top(s).type) {
       case CHAR:
         push_LONG (s,(long)pop_CHAR(s)); break;
       case DOUBLE:
@@ -308,9 +295,7 @@ void choose_converteI (STACK *s){
  * 
  */
 void choose_converteF (STACK *s){
-    DATA elem = top(s);
-    TYPE type = elem.type;
-    switch(type) {
+    switch(top(s).type) {
       case CHAR:
         push_DOUBLE (s,(double)pop_CHAR(s)); break;
       case LONG:
@@ -344,8 +329,7 @@ void choose_L (STACK *s){
  * 
  */
 void short_E (STACK *s) {
-  int x = checks_type(s);
-  switch(x){
+  switch(checks_type(s)){
     case 0: ;
       long y = pop_LONG(s);
       if (pop_LONG(s) != 0 && y) push_LONG (s,y);
@@ -380,8 +364,7 @@ void short_E (STACK *s) {
  * 
  */
 void short_OU (STACK *s) {
-  int x = checks_type(s);
-  switch(x){
+  switch(checks_type(s)){
     case 0: ;
       long y = pop_LONG(s);
       long w = pop_LONG(s);
@@ -424,8 +407,7 @@ void short_OU (STACK *s) {
  * 
  */
 void  short_minor (STACK *s) {
-  int x = checks_type(s);
-  switch(x){
+  switch(checks_type(s)){
     case 0: ;
       long y = pop_LONG(s);
       long w = pop_LONG(s);
@@ -464,8 +446,7 @@ void  short_minor (STACK *s) {
  * 
  */
 void short_higher (STACK *s) {
-  int x = checks_type(s);
-  switch(x){
+  switch(checks_type(s)){
     case 0: ;
       long y = pop_LONG(s);
       long w = pop_LONG(s);
@@ -536,8 +517,7 @@ void if_then_else (STACK *s) {
  * 
  */
 void choose_igual (STACK *s){
-  int x = checks_type(s);
-  switch(x){
+  switch(checks_type(s)){
     case 0: ;
       long y = pop_LONG (s);
       long w = pop_LONG (s);
@@ -574,8 +554,7 @@ void choose_igual (STACK *s){
  * 
  */
 void choose_menor (STACK *s){
-  int x = checks_type(s);
-  switch(x){
+  switch(checks_type(s)){
     case 0: ;
       long y = pop_LONG (s);
       long w = pop_LONG (s);
@@ -630,8 +609,7 @@ void choose_menor (STACK *s){
  * 
  */
 void choose_maior (STACK *s){
-  int x = checks_type(s);
-  switch(x){
+  switch(checks_type(s)){
     case 0: ;
       long y = pop_LONG (s);
       long w = pop_LONG (s);
