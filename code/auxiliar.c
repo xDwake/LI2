@@ -665,8 +665,7 @@ void choose_maior (STACK *s){
  */
 void choose_nao(STACK *s){
     DATA elem = pop(s);
-    TYPE type = elem.type;
-    switch(type) {
+    switch(elem.type) {
       case CHAR:
         if(elem.CHAR !=0) push_LONG(s,0);
         else push_LONG(s,1); 
@@ -767,3 +766,44 @@ int checks_type(STACK *s){
   else if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),CHAR)) r=6;
   return r; 
 }
+
+/*int checks_type(STACK *s){
+  int r=11;
+  switch(get_elem(s,1).type) {
+    case LONG:
+      switch (top(s).type){
+        case LONG:
+          r=0; break;
+        case DOUBLE:
+          r=2; break;
+        case CHAR:
+          r=5; break;
+        default:
+          break;      
+      }
+      break;  
+    case DOUBLE:  
+      switch (top(s).type){
+        case LONG:
+          r=3; break;
+        case DOUBLE:
+          r=1; break;
+        default:
+          break;  
+      }
+      break;
+    case CHAR:
+      switch (top(s).type){
+        case LONG:
+          r=6; break;
+        case CHAR:
+          r=4; break;
+        default:
+          break;      
+      }
+      break;
+    default: 
+      break;
+  }
+}
+*/
