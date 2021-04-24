@@ -163,7 +163,7 @@ void parser (char *line){
                 case 'f':
                   choose_converteF(s); break;
                 case 'l':
-                  choose_L(s); break;
+                  choose_L(s); break; /*
                 case '?':
                   if_then_else(s); break;
                 case '=':
@@ -173,7 +173,7 @@ void parser (char *line){
                 case '>':
                   choose_maior(s); break;
                 case '!':
-                  choose_nao(s); break; /*
+                  choose_nao(s); break; 
                 case 'A':
                   choose_letter(s,var,25); break;
                 case 'B':

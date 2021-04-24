@@ -21,6 +21,7 @@ void choose_converteC (STACK *s);
 void choose_converteI (STACK *s);
 void choose_converteF (STACK *s);
 void choose_L (STACK *s);
+/*
 void short_OU (STACK *s);
 void short_E (STACK *s);
 void short_minor (STACK *s);
@@ -36,4 +37,5 @@ void choose_nao(STACK *s);
 void fill_var(STACK *var);
 void replace_elem(STACK *s, STACK *var, int x);
 void choose_letter(STACK *s, STACK*var, int x);
+*/
 int checks_type(STACK *s);

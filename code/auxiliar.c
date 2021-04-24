@@ -320,6 +320,7 @@ void choose_L (STACK *s){
     push_STRING(s,&linha[0]);
 }
 
+
 /**
  * \brief Função que testa a disjunção entre dois elementos.
  *
@@ -328,9 +329,10 @@ void choose_L (STACK *s){
  * @param s Estrutura stack onde são guardados os elementos.
  * 
  */
+/*
 void short_E (STACK *s) {
   switch(checks_type(s)){
-    case 0: ;
+    case 0: ; 
       long y = pop_LONG(s);
       if (pop_LONG(s) != 0 && y) push_LONG (s,y);
       else push_LONG (s,0);
@@ -354,7 +356,7 @@ void short_E (STACK *s) {
       break;
   }
 }
-
+*/
 /**
  * \brief Função que testa a conjunção entre dois elementos.
  *
@@ -363,6 +365,7 @@ void short_E (STACK *s) {
  * @param s Estrutura stack onde são guardados os elementos.
  * 
  */
+/*
 void short_OU (STACK *s) {
   switch(checks_type(s)){
     case 0: ;
@@ -397,7 +400,7 @@ void short_OU (STACK *s) {
       break;
   }
 }
-
+*/
 /**
  * \brief Função que procura o menor entre dois elementos.
  *
@@ -406,6 +409,7 @@ void short_OU (STACK *s) {
  * @param s Estrutura stack onde são guardados os elementos.
  * 
  */
+/*
 void  short_minor (STACK *s) {
   switch(checks_type(s)){
     case 0: ;
@@ -436,7 +440,7 @@ void  short_minor (STACK *s) {
       break;
   }
 }
-
+*/
 /**
  * \brief Função que procura o maior entre dois elementos.
  *
@@ -445,6 +449,7 @@ void  short_minor (STACK *s) {
  * @param s Estrutura stack onde são guardados os elementos.
  * 
  */
+/*
 void short_higher (STACK *s) {
   switch(checks_type(s)){
     case 0: ;
@@ -475,13 +480,14 @@ void short_higher (STACK *s) {
       break;
   }
 }
-
+*/
 /**
  * \brief Função correspondente à condição if-then-else.
  * 
  * @param s Estrutura stack onde são guardados os elementos.
  * 
  */
+/*
 void if_then_else (STACK *s) {
   DATA x = pop(s);
   DATA y = pop(s);
@@ -509,13 +515,14 @@ void if_then_else (STACK *s) {
     }   
   } 
 }
-
+*/
 /**
  * \brief Função que testa a igualdade entre dois elementos.
  * 
  * @param s Estrutura stack onde são guardados os elementos.
  * 
  */
+/*
 void choose_igual (STACK *s){
   switch(checks_type(s)){
     case 0: ;
@@ -546,13 +553,14 @@ void choose_igual (STACK *s){
       break;
   }
 }
-
+*/
 /**
  * \brief Função que testa se um elemento é menor que outro.
  * 
  * @param s Estrutura stack onde são guardados os elementos.
  * 
  */
+/*
 void choose_menor (STACK *s){
   switch(checks_type(s)){
     case 0: ;
@@ -601,13 +609,14 @@ void choose_menor (STACK *s){
       break;
   }
 }
-
+*/
 /**
  * \brief Função que testa se um elemento é maior que outro.
  * 
  * @param s Estrutura stack onde são guardados os elementos.
  * 
  */
+/*
 void choose_maior (STACK *s){
   switch(checks_type(s)){
     case 0: ;
@@ -656,13 +665,14 @@ void choose_maior (STACK *s){
       break;
   }
 }
-
+*/
 /**
  * \brief Função corresponte à negação.
  * 
  * @param s Estrutura stack onde são guardados os elementos.
  * 
  */
+/*
 void choose_nao(STACK *s){
     DATA elem = pop(s);
     switch(elem.type) {
@@ -682,13 +692,14 @@ void choose_nao(STACK *s){
         break;    
     } 
 }
-
+*/
 /**
  * \brief Função que preenche a stack das variaveis.
  * 
  * @param var Estrutura stack onde estão guardadas as variaveis.
  * 
  */
+/*
 void fill_var(STACK *var){
   push_LONG(var,10);
   push_LONG(var,11);
@@ -717,7 +728,7 @@ void fill_var(STACK *var){
   push_LONG(var,1);
   push_LONG(var,2);
 }
-
+*/
 /**
  * \brief Função que substitui uma variavel pelo topo da stack.
  * 
@@ -728,10 +739,11 @@ void fill_var(STACK *var){
  * @param x Indice do elemento a ser trocado.
  * 
  */
+/*
 void replace_elem(STACK *s, STACK *var, int x){
   var->stack[x] = top(s); 
 }
-
+*/
 /**
  * \brief Função que vai buscar o valor de determinada variavel.
  * 
@@ -742,10 +754,11 @@ void replace_elem(STACK *s, STACK *var, int x){
  * @param x Indice da variavel.
  * 
  */
+/*
 void choose_letter(STACK *s,STACK *var, int x){
   push(s,get_elem(var,x));
 }
-
+*/
 /**
  * \brief Função que verifica o tipo dos dois elementos do topo da stack.
  * 
