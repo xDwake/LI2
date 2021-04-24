@@ -20,8 +20,8 @@
  */ 
 void parser (char *line){ 
     STACK *s = create_stack();
-    STACK *var = create_stack();
-    fill_var(var);
+    //STACK *var = create_stack();
+    //fill_var(var);
     char *limits = " \t\n";
     for (char *token = strtok(line,limits); token != NULL; token = strtok(NULL, limits)) { // everytime there's a " ", "\t" or "\n" the elements in between are saved as tokens
         char *rem;
@@ -32,7 +32,7 @@ void parser (char *line){
         }
         else if(strcmp (token, "-") == 0) {
           choose_subtrai (s);
-        }
+        } /*
         else if(strcmp(token,"e|") == 0) {
           short_OU (s);
         } 
@@ -122,7 +122,7 @@ void parser (char *line){
         }
         else if (strcmp(token,":Z") == 0){
           replace_elem(s,var,25);
-        }
+        } */
         else switch (*token){
                 case '+':
                   choose_soma(s); break;
@@ -173,7 +173,7 @@ void parser (char *line){
                 case '>':
                   choose_maior(s); break;
                 case '!':
-                  choose_nao(s); break;
+                  choose_nao(s); break; /*
                 case 'A':
                   choose_letter(s,var,25); break;
                 case 'B':
@@ -225,7 +225,7 @@ void parser (char *line){
                 case 'Y':
                   choose_letter(s,var,1); break;
                 case 'Z':
-                  choose_letter(s,var,0); break;                                                           
+                  choose_letter(s,var,0); break; */                                                          
                 default: 
                   push_DOUBLE(s,val_d); break;    
         }
