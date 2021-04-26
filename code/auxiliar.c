@@ -168,6 +168,54 @@ void choose_incrementa (STACK *s){
 }
 
 /**
+ * \brief Função que realiza a disjunção.
+ * 
+ * A função é equivalente ao 'e' lógico.  
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ *
+ */
+void choose_E(STACK *s){
+   push_LONG(s,pop_LONG(s)&pop_LONG(s));
+}
+
+/**
+ * \brief Função que realiza a conjunção.
+ * 
+ * A função é equivalente ao 'ou' lógico.  
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ *
+ */
+void choose_ou(STACK *s){
+   push_LONG(s,pop_LONG(s)|pop_LONG(s));
+}
+
+/**
+ * \brief Função que realiza a operação de xor(bitwise).
+ * 
+ * A função é equivalente ao 'ou' exclusivo.  
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ *
+ */
+void choose_xor(STACK *s){
+   push_LONG(s,pop_LONG(s)^pop_LONG(s));
+}
+
+/**
+ * \brief Função que realiza a operação de not(bitwise).
+ * 
+ * A função é equivalente à negação.  
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ *
+ */
+void choose_not(STACK *s){
+   push_LONG(s,~pop_LONG(s));
+}
+
+/**
  * \brief Função que realiza a operação módulo.
  * 
  * A função retira o elemento do topo da stack.  
@@ -210,6 +258,28 @@ void choose_potencia (STACK *s){
 }
 
 /**
+ * \brief Função que realiza a operação de duplicação.
+ * 
+ * A função duplica o elemento que se encontra no topo da stack.  
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ *
+ */
+void choose_duplica (STACK *s){
+    push(s,get_elem(s,0));
+}
+
+/**
+ * \brief Função que realiza a operação de pop.
+ *  
+ * @param s Estrutura stack onde são guardados os elementos.
+ *
+ */
+void choose_pop (STACK *s){
+    pop(s);
+}
+
+/**
  * \brief Função que troca a posição dos elementos.
  * 
  * A função verifica o tipo do elemento do topo da stack e retira-o. 
@@ -242,6 +312,19 @@ void choose_roda(STACK *s){
         push (s,x);
         push (s,z);   
 }
+
+/**
+ * \brief Função que copia o n-ésimo elemento da stack.
+ * 
+ * A função verifica o indice do elemento indicado e copia o elemento correspondente para o topo da stack. 
+ *
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
+void choose_copia(STACK *s){
+       push(s,get_elem(s,pop_LONG(s)));
+}
+
 
 /**
  * \brief Função que converte o elemento do topo da stack num char.
@@ -329,7 +412,6 @@ void choose_L (STACK *s){
  * @param s Estrutura stack onde são guardados os elementos.
  * 
  */
-/*
 void short_E (STACK *s) {
   switch(checks_type(s)){
     case 0: ; 
@@ -356,7 +438,7 @@ void short_E (STACK *s) {
       break;
   }
 }
-*/
+
 /**
  * \brief Função que testa a conjunção entre dois elementos.
  *
@@ -365,7 +447,6 @@ void short_E (STACK *s) {
  * @param s Estrutura stack onde são guardados os elementos.
  * 
  */
-/*
 void short_OU (STACK *s) {
   switch(checks_type(s)){
     case 0: ;
@@ -400,7 +481,7 @@ void short_OU (STACK *s) {
       break;
   }
 }
-*/
+
 /**
  * \brief Função que procura o menor entre dois elementos.
  *
@@ -409,7 +490,6 @@ void short_OU (STACK *s) {
  * @param s Estrutura stack onde são guardados os elementos.
  * 
  */
-/*
 void  short_minor (STACK *s) {
   switch(checks_type(s)){
     case 0: ;
@@ -440,7 +520,7 @@ void  short_minor (STACK *s) {
       break;
   }
 }
-*/
+
 /**
  * \brief Função que procura o maior entre dois elementos.
  *
@@ -449,7 +529,6 @@ void  short_minor (STACK *s) {
  * @param s Estrutura stack onde são guardados os elementos.
  * 
  */
-/*
 void short_higher (STACK *s) {
   switch(checks_type(s)){
     case 0: ;
@@ -480,14 +559,13 @@ void short_higher (STACK *s) {
       break;
   }
 }
-*/
+
 /**
  * \brief Função correspondente à condição if-then-else.
  * 
  * @param s Estrutura stack onde são guardados os elementos.
  * 
  */
-/*
 void if_then_else (STACK *s) {
   DATA x = pop(s);
   DATA y = pop(s);
@@ -515,14 +593,13 @@ void if_then_else (STACK *s) {
     }   
   } 
 }
-*/
+
 /**
  * \brief Função que testa a igualdade entre dois elementos.
  * 
  * @param s Estrutura stack onde são guardados os elementos.
  * 
  */
-/*
 void choose_igual (STACK *s){
   switch(checks_type(s)){
     case 0: ;
@@ -553,14 +630,13 @@ void choose_igual (STACK *s){
       break;
   }
 }
-*/
+
 /**
  * \brief Função que testa se um elemento é menor que outro.
  * 
  * @param s Estrutura stack onde são guardados os elementos.
  * 
  */
-/*
 void choose_menor (STACK *s){
   switch(checks_type(s)){
     case 0: ;
@@ -593,13 +669,13 @@ void choose_menor (STACK *s){
       if (f<e) push_LONG (s,1);
       else push_LONG(s,0);
       break;
-    case 5: ;
+    case 6: ;
       char g = pop_CHAR (s);
       long h = pop_LONG (s);
       if (h<g) push_LONG(s,1);
       else push_LONG(s,0);
       break;
-    case 6: ;
+    case 5: ;
       long i = pop_LONG (s);
       char j = pop_CHAR (s);
       if (j<i) push_LONG(s,1);
@@ -609,14 +685,13 @@ void choose_menor (STACK *s){
       break;
   }
 }
-*/
+
 /**
  * \brief Função que testa se um elemento é maior que outro.
  * 
  * @param s Estrutura stack onde são guardados os elementos.
  * 
  */
-/*
 void choose_maior (STACK *s){
   switch(checks_type(s)){
     case 0: ;
@@ -649,13 +724,13 @@ void choose_maior (STACK *s){
       if (f>e) push_LONG (s,1);
       else push_LONG(s,0);
       break;
-    case 5: ;
+    case 6: ;
       char g = pop_CHAR (s);
       long h = pop_LONG (s);
       if (h>g) push_LONG(s,1);
       else push_LONG(s,0);
       break;
-    case 6: ;
+    case 5: ;
       long i = pop_LONG (s);
       char j = pop_CHAR (s);
       if (j>i) push_LONG(s,1);
@@ -665,14 +740,13 @@ void choose_maior (STACK *s){
       break;
   }
 }
-*/
+
 /**
  * \brief Função corresponte à negação.
  * 
  * @param s Estrutura stack onde são guardados os elementos.
  * 
  */
-/*
 void choose_nao(STACK *s){
     DATA elem = pop(s);
     switch(elem.type) {
@@ -692,14 +766,13 @@ void choose_nao(STACK *s){
         break;    
     } 
 }
-*/
+
 /**
  * \brief Função que preenche a stack das variaveis.
  * 
  * @param var Estrutura stack onde estão guardadas as variaveis.
  * 
  */
-/*
 void fill_var(STACK *var){
   push_LONG(var,10);
   push_LONG(var,11);
@@ -728,7 +801,7 @@ void fill_var(STACK *var){
   push_LONG(var,1);
   push_LONG(var,2);
 }
-*/
+
 /**
  * \brief Função que substitui uma variavel pelo topo da stack.
  * 
@@ -739,11 +812,10 @@ void fill_var(STACK *var){
  * @param x Indice do elemento a ser trocado.
  * 
  */
-/*
 void replace_elem(STACK *s, STACK *var, int x){
   var->stack[x] = top(s); 
 }
-*/
+
 /**
  * \brief Função que vai buscar o valor de determinada variavel.
  * 
@@ -754,11 +826,10 @@ void replace_elem(STACK *s, STACK *var, int x){
  * @param x Indice da variavel.
  * 
  */
-/*
 void choose_letter(STACK *s,STACK *var, int x){
   push(s,get_elem(var,x));
 }
-*/
+
 /**
  * \brief Função que verifica o tipo dos dois elementos do topo da stack.
  * 
@@ -767,24 +838,12 @@ void choose_letter(STACK *s,STACK *var, int x){
  * @param s Estrutura stack onde são guardados os elementos.
  *
  * @returns O identificador correspondente. 
- */ 
+ */
 int checks_type(STACK *s){
   int r=11;
-  if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),LONG)) r=0;
-  else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),DOUBLE)) r=1;
-  else if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),DOUBLE)) r=2;
-  else if (has_type ((get_elem(s,0)),DOUBLE) && has_type ((get_elem(s,1)),LONG)) r=3;
-  else if (has_type ((get_elem(s,0)),CHAR) && has_type ((get_elem(s,1)),CHAR)) r=4;
-  else if (has_type ((get_elem(s,0)),CHAR) && has_type ((get_elem(s,1)),LONG)) r=5;
-  else if (has_type ((get_elem(s,0)),LONG) && has_type ((get_elem(s,1)),CHAR)) r=6;
-  return r; 
-}
-
-/*int checks_type(STACK *s){
-  int r=11;
-  switch(get_elem(s,1).type) {
+  switch(get_elem(s,0).type){
     case LONG:
-      switch (top(s).type){
+      switch (get_elem(s,1).type){
         case LONG:
           r=0; break;
         case DOUBLE:
@@ -796,7 +855,7 @@ int checks_type(STACK *s){
       }
       break;  
     case DOUBLE:  
-      switch (top(s).type){
+      switch (get_elem(s,1).type){
         case LONG:
           r=3; break;
         case DOUBLE:
@@ -806,7 +865,7 @@ int checks_type(STACK *s){
       }
       break;
     case CHAR:
-      switch (top(s).type){
+      switch (get_elem(s,1).type){
         case LONG:
           r=6; break;
         case CHAR:
@@ -818,5 +877,115 @@ int checks_type(STACK *s){
     default: 
       break;
   }
+  return r;
 }
-*/
+
+int is_elogic (char *token){
+  return (strcmp(token,"e&")==0 || strcmp(token,"e|") == 0 || strcmp(token,"e>") == 0 || strcmp(token,"e<") == 0);
+}
+
+void choose_elogic(STACK *s, char *token){
+  if(strcmp(token,"e|") == 0) {
+    short_OU (s);
+  } 
+  else if(strcmp(token,"e&") == 0) {
+    short_E (s);
+  } 
+  else if(strcmp(token,"e>") == 0) {
+    short_higher (s);
+  } 
+  else if(strcmp(token,"e<") == 0) {
+    short_minor (s);
+  }
+}
+
+int is_adletter (char *token){
+  return (   strcmp(token,":A")==0 || strcmp(token,":B") == 0 || strcmp(token,":C") == 0 || strcmp(token,":D") == 0
+          || strcmp(token,":E")==0 || strcmp(token,":F") == 0 || strcmp(token,":G") == 0 || strcmp(token,":H") == 0
+          || strcmp(token,":I")==0 || strcmp(token,":J") == 0 || strcmp(token,":K") == 0 || strcmp(token,":L") == 0
+          || strcmp(token,":M")==0 || strcmp(token,":N") == 0 || strcmp(token,":O") == 0 || strcmp(token,":P") == 0
+          || strcmp(token,":Q")==0 || strcmp(token,":R") == 0 || strcmp(token,":S") == 0 || strcmp(token,":T") == 0
+          || strcmp(token,":U")==0 || strcmp(token,":V") == 0 || strcmp(token,":W") == 0 || strcmp(token,":X") == 0
+          || strcmp(token,":Y")==0 || strcmp(token,":Z") == 0);
+}
+
+void choose_adletter(STACK *s ,STACK *var,char *token){
+  if (strcmp(token,":A") == 0){
+    replace_elem(s,var,0);
+  }
+  else if (strcmp(token,":B") == 0){
+    replace_elem(s,var,1);
+  }
+  else if (strcmp(token,":C") == 0){
+    replace_elem(s,var,2);
+  }
+  else if (strcmp(token,":D") == 0){
+    replace_elem(s,var,3);
+  }
+  else if (strcmp(token,":E") == 0){
+    replace_elem(s,var,4);
+  }
+  else if (strcmp(token,":F") == 0){
+    replace_elem(s,var,5);
+  }
+  else if (strcmp(token,":G") == 0){
+    replace_elem(s,var,6);
+  }
+  else if (strcmp(token,":H") == 0){
+    replace_elem(s,var,7);
+  }
+  else if (strcmp(token,":I") == 0){
+    replace_elem(s,var,8);
+  }
+  else if (strcmp(token,":J") == 0){
+    replace_elem(s,var,9);
+  }
+  else if (strcmp(token,":K") == 0){
+    replace_elem(s,var,10);
+  }
+  else if (strcmp(token,":L") == 0){
+    replace_elem(s,var,11);
+  }
+  else if (strcmp(token,":M") == 0){
+    replace_elem(s,var,12);
+  }
+  else if (strcmp(token,":N") == 0){
+    replace_elem(s,var,13);
+  }
+  else if (strcmp(token,":O") == 0){
+    replace_elem(s,var,14);
+  }
+  else if (strcmp(token,":P") == 0){
+    replace_elem(s,var,15);
+  }
+  else if (strcmp(token,":Q") == 0){
+    replace_elem(s,var,16);
+  }
+  else if (strcmp(token,":R") == 0){
+    replace_elem(s,var,17);
+  } 
+  else if (strcmp(token,":S") == 0){
+    replace_elem(s,var,18);
+  }
+  else if (strcmp(token,":T") == 0){
+    replace_elem(s,var,19);
+  }
+  else if (strcmp(token,":U") == 0){
+    replace_elem(s,var,20);
+  }
+  else if (strcmp(token,":V") == 0){
+    replace_elem(s,var,21);
+  }
+  else if (strcmp(token,":W") == 0){
+    replace_elem(s,var,22);
+  }
+  else if (strcmp(token,":X") == 0){
+    replace_elem(s,var,23);
+  } 
+  else if (strcmp(token,":Y") == 0){
+    replace_elem(s,var,24);
+  }
+  else if (strcmp(token,":Z") == 0){
+    replace_elem(s,var,25);
+  } 
+}

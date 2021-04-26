@@ -20,8 +20,8 @@
  */ 
 void parser (char *line){ 
     STACK *s = create_stack();
-    //STACK *var = create_stack();
-    //fill_var(var);
+    STACK *var = create_stack();
+    fill_var(var);
     char *limits = " \t\n";
     for (char *token = strtok(line,limits); token != NULL; token = strtok(NULL, limits)) { // everytime there's a " ", "\t" or "\n" the elements in between are saved as tokens
         char *rem;
@@ -30,99 +30,15 @@ void parser (char *line){
         if (strlen(rem) == 0){
            push_LONG(s,val_i);
         }
+        else if (is_adletter(token)){
+          choose_adletter(s,var,token);
+        }
+        else if (is_elogic(token)){
+          choose_elogic(s,token);
+        }
         else if(strcmp (token, "-") == 0) {
           choose_subtrai (s);
-        } /*
-        else if(strcmp(token,"e|") == 0) {
-          short_OU (s);
-        } 
-        else if(strcmp(token,"e&") == 0) {
-          short_E (s);
-        } 
-        else if(strcmp(token,"e>") == 0) {
-          short_higher (s);
-        } 
-        else if(strcmp(token,"e<") == 0) {
-          short_minor (s);
         }
-        else if (strcmp(token,":A") == 0){
-          replace_elem(s,var,0);
-        }
-        else if (strcmp(token,":B") == 0){
-          replace_elem(s,var,1);
-        }
-        else if (strcmp(token,":C") == 0){
-          replace_elem(s,var,2);
-        }
-        else if (strcmp(token,":D") == 0){
-          replace_elem(s,var,3);
-        }
-        else if (strcmp(token,":E") == 0){
-          replace_elem(s,var,4);
-        }
-        else if (strcmp(token,":F") == 0){
-          replace_elem(s,var,5);
-        }
-        else if (strcmp(token,":G") == 0){
-          replace_elem(s,var,6);
-        }
-        else if (strcmp(token,":H") == 0){
-          replace_elem(s,var,7);
-        }
-        else if (strcmp(token,":I") == 0){
-          replace_elem(s,var,8);
-        }
-        else if (strcmp(token,":J") == 0){
-          replace_elem(s,var,9);
-        }
-        else if (strcmp(token,":K") == 0){
-          replace_elem(s,var,10);
-        }
-        else if (strcmp(token,":L") == 0){
-          replace_elem(s,var,11);
-        }
-        else if (strcmp(token,":M") == 0){
-          replace_elem(s,var,12);
-        }
-        else if (strcmp(token,":N") == 0){
-          replace_elem(s,var,13);
-        }
-        else if (strcmp(token,":O") == 0){
-          replace_elem(s,var,14);
-        }
-        else if (strcmp(token,":P") == 0){
-          replace_elem(s,var,15);
-        }
-        else if (strcmp(token,":Q") == 0){
-          replace_elem(s,var,16);
-        }
-        else if (strcmp(token,":R") == 0){
-          replace_elem(s,var,17);
-        } 
-        else if (strcmp(token,":S") == 0){
-          replace_elem(s,var,18);
-        }
-        else if (strcmp(token,":T") == 0){
-          replace_elem(s,var,19);
-        }
-        else if (strcmp(token,":U") == 0){
-          replace_elem(s,var,20);
-        }
-        else if (strcmp(token,":V") == 0){
-          replace_elem(s,var,21);
-        }
-        else if (strcmp(token,":W") == 0){
-          replace_elem(s,var,22);
-        }
-        else if (strcmp(token,":X") == 0){
-          replace_elem(s,var,23);
-        } 
-        else if (strcmp(token,":Y") == 0){
-          replace_elem(s,var,24);
-        }
-        else if (strcmp(token,":Z") == 0){
-          replace_elem(s,var,25);
-        } */
         else switch (*token){
                 case '+':
                   choose_soma(s); break;
@@ -135,27 +51,27 @@ void parser (char *line){
                 case ')':
                   choose_incrementa(s); break;
                 case '&':
-                  push_LONG(s,pop_LONG(s)&pop_LONG(s)); break;
+                  choose_E(s); break;
                 case '|':
-                  push_LONG(s,pop_LONG(s)|pop_LONG(s)); break;
+                  choose_ou(s); break;
                 case '%':
                   choose_modulo(s); break;
                 case '^':
-                  push_LONG(s,pop_LONG(s)^pop_LONG(s)); break;
+                  choose_xor(s); break;
                 case '~':
-                  push_LONG(s,~pop_LONG(s)); break;
+                  choose_not(s); break;
                 case '#':
                   choose_potencia(s); break;
                 case '_':
-                  push(s,get_elem(s,0)); break;
+                  choose_duplica(s); break;
                 case ';':
-                  pop(s); break;
+                  choose_pop(s); break;
                 case '\\':
                   choose_troca(s); break;
                 case '@':
                   choose_roda(s); break;
                 case '$':
-                  push(s,get_elem(s,pop_LONG(s))); break;
+                  choose_copia(s); break;
                 case 'c':
                   choose_converteC(s); break;
                 case 'i':
@@ -163,7 +79,7 @@ void parser (char *line){
                 case 'f':
                   choose_converteF(s); break;
                 case 'l':
-                  choose_L(s); break; /*
+                  choose_L(s); break; 
                 case '?':
                   if_then_else(s); break;
                 case '=':
@@ -225,7 +141,7 @@ void parser (char *line){
                 case 'Y':
                   choose_letter(s,var,1); break;
                 case 'Z':
-                  choose_letter(s,var,0); break; */                                                          
+                  choose_letter(s,var,0); break;                                                       
                 default: 
                   push_DOUBLE(s,val_d); break;    
         }

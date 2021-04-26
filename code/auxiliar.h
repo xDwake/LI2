@@ -13,15 +13,23 @@ void choose_multiplica (STACK *s);
 void choose_divide (STACK *s);
 void choose_decrementa (STACK *s);
 void choose_incrementa (STACK *s);
+void choose_E(STACK *s);
+void choose_ou(STACK *s);
 void choose_modulo (STACK *s);
+void choose_xor(STACK *s);
+void choose_not(STACK *s);
 void choose_potencia (STACK *s);
+
+void choose_duplica (STACK *s);
+void choose_pop (STACK *s);
 void choose_troca (STACK *s);
 void choose_roda(STACK *s);
+void choose_copia(STACK *s);
 void choose_converteC (STACK *s);
 void choose_converteI (STACK *s);
 void choose_converteF (STACK *s);
 void choose_L (STACK *s);
-/*
+
 void short_OU (STACK *s);
 void short_E (STACK *s);
 void short_minor (STACK *s);
@@ -37,5 +45,11 @@ void choose_nao(STACK *s);
 void fill_var(STACK *var);
 void replace_elem(STACK *s, STACK *var, int x);
 void choose_letter(STACK *s, STACK*var, int x);
-*/
+
 int checks_type(STACK *s);
+
+int is_elogic (char *token);
+void choose_elogic(STACK *s, char *token);
+
+int is_adletter (char *token);
+void choose_adletter(STACK *s ,STACK *var,char *token);
