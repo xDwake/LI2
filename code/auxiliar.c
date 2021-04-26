@@ -880,10 +880,24 @@ int checks_type(STACK *s){
   return r;
 }
 
+/**
+ * \brief Função que verfica se o input é do tipo e{<,>,|,&}.
+ * 
+ * @param token Token a ser verificado.
+ * 
+ */
 int is_elogic (char *token){
   return (strcmp(token,"e&")==0 || strcmp(token,"e|") == 0 || strcmp(token,"e>") == 0 || strcmp(token,"e<") == 0);
 }
 
+/**
+ * \brief Função que verfica se o input é do tipo :<Letra>.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @param token Token a ser verificado.
+ * 
+ */
 void choose_elogic(STACK *s, char *token){
   if(strcmp(token,"e|") == 0) {
     short_OU (s);
@@ -899,6 +913,12 @@ void choose_elogic(STACK *s, char *token){
   }
 }
 
+/**
+ * \brief Função que verfica se o input é do tipo :<Letra>.
+ * 
+ * @param token Token a ser verificado.
+ * 
+ */
 int is_adletter (char *token){
   return (   strcmp(token,":A")==0 || strcmp(token,":B") == 0 || strcmp(token,":C") == 0 || strcmp(token,":D") == 0
           || strcmp(token,":E")==0 || strcmp(token,":F") == 0 || strcmp(token,":G") == 0 || strcmp(token,":H") == 0
@@ -909,6 +929,16 @@ int is_adletter (char *token){
           || strcmp(token,":Y")==0 || strcmp(token,":Z") == 0);
 }
 
+/**
+ * \brief Função que verfica o input do tipo :<Letra>.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @param var Estrutura stack onde estão guardadas as variaveis.
+ * 
+ * @param token Token a ser verificado.
+ * 
+ */
 void choose_adletter(STACK *s ,STACK *var,char *token){
   if (strcmp(token,":A") == 0){
     replace_elem(s,var,0);
