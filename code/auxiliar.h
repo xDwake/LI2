@@ -51,5 +51,7 @@ int checks_type(STACK *s);
 int is_elogic (char *token);
 void choose_elogic(STACK *s, char *token);
 
-int is_adletter (char *token);
-void choose_adletter(STACK *s ,STACK *var,char *token);
+int is_adletterA_M (char *token);
+int is_adletterN_Z (char *token);
+void choose_adletterA_M(STACK *s ,STACK *var,char *token);
+void choose_adletterN_Z(STACK *s ,STACK *var,char *token);

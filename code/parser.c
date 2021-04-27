@@ -30,8 +30,11 @@ void parser (char *line){
         if (strlen(rem) == 0){
            push_LONG(s,val_i);
         }
-        else if (is_adletter(token)){
-          choose_adletter(s,var,token);
+        else if (is_adletterA_M(token)){
+          choose_adletterA_M(s,var,token);
+        }
+        else if (is_adletterN_Z(token)){
+          choose_adletterN_Z(s,var,token);
         }
         else if (is_elogic(token)){
           choose_elogic(s,token);
