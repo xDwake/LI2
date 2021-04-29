@@ -28,9 +28,9 @@
  * @returns Devolve o valor 0.
  */
 int main (){
-    char line[10240];
+    char line[20480];
 
-    assert( fgets(line, 10240,stdin) != NULL);
+    assert( fgets(line, 20480,stdin) != NULL);
     assert( line[strlen(line)-1] == '\n');
     
     parser(line);
