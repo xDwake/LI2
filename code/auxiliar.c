@@ -7,6 +7,7 @@
 #include <math.h>
 #include "auxiliar.h"
 #include "stack.h"
+#include "guiao4.h"
 
 /**
  * \brief Função que retorna o elemento em determinada posição.
@@ -251,7 +252,10 @@ void choose_potencia (STACK *s){
       break;
     case 3: ;
       double t=pop_DOUBLE(s); push_DOUBLE(s,pow(pop_LONG(s),t));
-      break;  
+      break;
+    case 9: ;
+      char* s1 = pop_STRING(s); char* s2 = pop_STRING(s);
+      push_LONG(s,procura(s2,s1)); break;    
     default:
       break;
   }
@@ -515,7 +519,12 @@ void  short_minor (STACK *s) {
       long d = pop_LONG (s);
       if (c < d) push_DOUBLE (s,c);
       else push_LONG (s,d);
-      break;  
+      break;
+    case 9: ;
+      char* s1 = pop_STRING(s); char* s2 = pop_STRING(s);
+      if (compare_lexical_menor(s2,s1)) push_STRING(s,s2);
+      else push_STRING(s,s1); 
+      break;     
     default:
       break;
   }
@@ -554,6 +563,11 @@ void short_higher (STACK *s) {
       long d = pop_LONG (s);
       if (c > d) push_DOUBLE (s,c);
       else push_LONG (s,d);
+      break;
+    case 9: ;
+      char* s1 = pop_STRING(s); char* s2 = pop_STRING(s);
+      if (compare_lexical_maior(s2,s1)) push_STRING(s,s2);
+      else push_STRING(s,s1); 
       break;  
     default:
       break;
@@ -625,7 +639,10 @@ void choose_igual (STACK *s){
       long d = pop_LONG (s);
       if (c==d) push_LONG(s,1);
       else push_LONG(s,0);
-      break;  
+      break;
+    case 9: ;
+      char* s1 = pop_STRING(s); char* s2 = pop_STRING(s);
+      push_LONG(s,compare_lexical_igual(s2,s1)); break;   
     default:
       break;
   }
@@ -680,7 +697,10 @@ void choose_menor (STACK *s){
       char j = pop_CHAR (s);
       if (j<i) push_LONG(s,1);
       else push_LONG(s,0);
-      break; 
+      break;
+    case 9: ;
+      char* s1 = pop_STRING(s); char* s2 = pop_STRING(s);
+      push_LONG(s,compare_lexical_menor(s2,s1)); break;       
     default:
       break;
   }
@@ -735,7 +755,10 @@ void choose_maior (STACK *s){
       char j = pop_CHAR (s);
       if (j>i) push_LONG(s,1);
       else push_LONG(s,0);
-      break;     
+      break;
+    case 9: ;
+      char* s1 = pop_STRING(s); char* s2 = pop_STRING(s);
+      push_LONG(s,compare_lexical_maior(s2,s1)); break;        
     default:
       break;
   }
@@ -870,10 +893,23 @@ int checks_type(STACK *s){
           r=6; break;
         case CHAR:
           r=4; break;
+        case STRING:
+          r=10; break;  
         default:
           break;      
       }
       break;
+    case STRING:
+      switch(get_elem(s,1).type){
+        case LONG:
+          r=7; break;
+        case CHAR:
+          r=8; break;
+        case STRING:
+          r=9; break;  
+        default:
+          break;
+      }  
     default: 
       break;
   }

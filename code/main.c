@@ -29,10 +29,8 @@
  */
 int main (){
     char line[20480];
-
     assert( fgets(line, 20480,stdin) != NULL);
     assert( line[strlen(line)-1] == '\n');
-    
     parser(line);
     return 0;
 }
