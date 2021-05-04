@@ -45,7 +45,7 @@ int is_string(char *token, char s1);
 char* tail(char* s);
 char* head(char* s);
 
-void get_string (STACK *s, char s1[]);
+void get_string (STACK *s, char *token);
 int conta_aspas(char *s);
 
 int conta_parentesis(char *s);
