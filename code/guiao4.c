@@ -148,8 +148,8 @@ void choose_range(STACK *s){
 int procura_char (char principal[], char wanted) {
     int res = 0;
     while(*principal) {
-        if(*principal != wanted) principal++;
-        else res++;
+        if(*principal != wanted) {principal++;res++;}
+        else break;
     }
     if (*principal) return res;
     else return -1;   
@@ -274,7 +274,6 @@ void get_string (STACK *s, char *token) {
     if (conta_aspas(token)%2 == 0) push_STRING(s,head(tail(token)));
     else 
     {
-      push_CHAR(s,' ');
       push_STRING(s,head((token)));
       choose_concatena_cstring(s);
     }     
@@ -538,7 +537,11 @@ void choose_ooc(STACK *s, STACK *var, char*token){
                 case ',': 
                   choose_range(s); break;
                 case '"':
-                  break;  
+                  push_CHAR(s,' '); break;
+                case '[':
+                  break;
+                case ']':
+                  break;      
                 default:
                   push_STRING(s,token); break;
         }                
