@@ -670,7 +670,7 @@ void choose_menor (STACK *s){
       else push_LONG (s,0);
       break;
     case 3: ;
-      if (pop_DOUBLE (s)>pop_LONG (s)) push_LONG(s,1);
+      if (pop_DOUBLE (s) > pop_LONG (s)) push_LONG(s,1);
       else push_LONG(s,0);
       break;
     case 4: ;
@@ -682,8 +682,6 @@ void choose_menor (STACK *s){
       else push_LONG(s,0);
       break;
     case 5: ;
-      long i = pop_LONG (s);
-      char j = pop_CHAR (s);
       if (pop_LONG (s) > pop_CHAR (s)) push_LONG(s,1);
       else push_LONG(s,0);
       break;
