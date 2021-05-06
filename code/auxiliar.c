@@ -1075,6 +1075,14 @@ void choose_adletterN_Z(STACK *s ,STACK *var,char *token){
   else replace_elem(s,var,25);
 }
 
+/**
+ * \brief Função que escolhe o qual o tipo de operação a reaizar.
+ * 
+ * A função infere qual o tipo de operação a realizar pelo operador conforme o que se encontra na Stack. 
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
 void choose_soma_ou_concat(STACK *s) {
   if (has_type(get_elem(s,1),STRING) && has_type(get_elem(s,0),STRING)) choose_concatena_string(s); 
   else if (has_type(get_elem(s,1),STRING) && has_type(get_elem(s,0),CHAR)) choose_concatena_stringc(s);
@@ -1082,31 +1090,79 @@ void choose_soma_ou_concat(STACK *s) {
   else choose_soma(s); 
 }
 
+/**
+ * \brief Função que escolhe o qual o tipo de operação a reaizar.
+ * 
+ * A função infere qual o tipo de operação a realizar pelo operador conforme o que se encontra na Stack. 
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
 void choose_multiplica_ou_repete (STACK *s){
   if (has_type(get_elem(s,1),STRING) && has_type(get_elem(s,0),LONG)) choose_repete(s);
   else choose_multiplica(s); 
 }
 
+/**
+ * \brief Função que escolhe o qual o tipo de operação a reaizar.
+ * 
+ * A função infere qual o tipo de operação a realizar pelo operador conforme o que se encontra na Stack. 
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
 void choose_decrementa_ou_removefirst (STACK *s){
   if (has_type(get_elem(s,0),STRING)) choose_remove_first(s);
   else choose_decrementa(s); 
 }
 
+/**
+ * \brief Função que escolhe o qual o tipo de operação a reaizar.
+ * 
+ * A função infere qual o tipo de operação a realizar pelo operador conforme o que se encontra na Stack. 
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
 void choose_incrementa_ou_removelast (STACK *s){
   if (has_type(get_elem(s,0),STRING)) choose_remove_last(s);
   else choose_incrementa(s);
 }
 
+/**
+ * \brief Função que escolhe o qual o tipo de operação a reaizar.
+ * 
+ * A função infere qual o tipo de operação a realizar pelo operador conforme o que se encontra na Stack. 
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
 void choose_igual_ou_elemigual (STACK *s){
   if (has_type(get_elem(s,1),STRING) && has_type(get_elem(s,0),LONG)) choose_elem_igual(s);
   else choose_igual(s); 
 }
 
+/**
+ * \brief Função que escolhe o qual o tipo de operação a reaizar.
+ * 
+ * A função infere qual o tipo de operação a realizar pelo operador conforme o que se encontra na Stack. 
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
 void choose_menor_ou_nelemsmenor (STACK *s){
   if (has_type(get_elem(s,1),STRING) && has_type(get_elem(s,0),LONG)) choose_nelems_menor(s);
   else choose_menor(s);
 }
 
+/**
+ * \brief Função que escolhe o qual o tipo de operação a reaizar.
+ * 
+ * A função infere qual o tipo de operação a realizar pelo operador conforme o que se encontra na Stack. 
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
 void choose_maior_ou_nelemsmaior (STACK *s){
   if (has_type(get_elem(s,1),STRING) && has_type(get_elem(s,0),LONG)) choose_nelems_maior(s);
   else choose_maior(s);
