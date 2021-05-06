@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <ctype.h>
 #include "auxiliar.h"
 #include "stack.h"
 #include "guiao4.h"
@@ -950,29 +951,13 @@ void choose_elogic(STACK *s, char *token){
 }
 
 /**
- * \brief Função que verfica se o input é do tipo :<Letra>, de :A a :M.
+ * \brief Função que verfica se o input é do tipo :<Letra_Maiuscula>
  * 
  * @param token Token a ser verificado.
  * 
  */
-int is_adletterA_M (char *token){
-  return (   strcmp(token,":A")==0 || strcmp(token,":B") == 0 || strcmp(token,":C") == 0 || strcmp(token,":D") == 0
-          || strcmp(token,":E")==0 || strcmp(token,":F") == 0 || strcmp(token,":G") == 0 || strcmp(token,":H") == 0
-          || strcmp(token,":I")==0 || strcmp(token,":J") == 0 || strcmp(token,":K") == 0 || strcmp(token,":L") == 0
-          || strcmp(token,":M")==0 ); 
-}
-
-/**
- * \brief Função que verfica se o input é do tipo :<Letra>, de :N a :Z.
- * 
- * @param token Token a ser verificado.
- * 
- */
-int is_adletterN_Z (char *token){
-  return (   strcmp(token,":N") == 0 || strcmp(token,":O") == 0 || strcmp(token,":P") == 0|| strcmp(token,":Q")==0 
-          || strcmp(token,":R") == 0 || strcmp(token,":S") == 0 || strcmp(token,":T") == 0|| strcmp(token,":U")==0 
-          || strcmp(token,":V") == 0 || strcmp(token,":W") == 0 || strcmp(token,":X") == 0|| strcmp(token,":Y")==0 
-          || strcmp(token,":Z") == 0 );
+int is_adletter (char *token){
+  return (token[0]==':' && isupper(token[1]));
 }
 
 /**
@@ -985,94 +970,8 @@ int is_adletterN_Z (char *token){
  * @param token Token a ser verificado.
  * 
  */
-void choose_adletterA_M(STACK *s ,STACK *var,char *token){
-  if (strcmp(token,":A") == 0){
-    replace_elem(s,var,0);
-  }
-  else if (strcmp(token,":B") == 0){
-    replace_elem(s,var,1);
-  }
-  else if (strcmp(token,":C") == 0){
-    replace_elem(s,var,2);
-  }
-  else if (strcmp(token,":D") == 0){
-    replace_elem(s,var,3);
-  }
-  else if (strcmp(token,":E") == 0){
-    replace_elem(s,var,4);
-  }
-  else if (strcmp(token,":F") == 0){
-    replace_elem(s,var,5);
-  }
-  else if (strcmp(token,":G") == 0){
-    replace_elem(s,var,6);
-  }
-  else if (strcmp(token,":H") == 0){
-    replace_elem(s,var,7);
-  }
-  else if (strcmp(token,":I") == 0){
-    replace_elem(s,var,8);
-  }
-  else if (strcmp(token,":J") == 0){
-    replace_elem(s,var,9);
-  }
-  else if (strcmp(token,":K") == 0){
-    replace_elem(s,var,10);
-  }
-  else if (strcmp(token,":L") == 0){
-    replace_elem(s,var,11);
-  }
-  else replace_elem(s,var,12);
-} 
-
-/**
- * \brief Função que verfica o input do tipo :<Letra>, de :N a :Z.
- * 
- * @param s Estrutura stack onde são guardados os elementos.
- * 
- * @param var Estrutura stack onde estão guardadas as variaveis.
- * 
- * @param token Token a ser verificado.
- * 
- */
-void choose_adletterN_Z(STACK *s ,STACK *var,char *token){
-  if (strcmp(token,":N") == 0){
-    replace_elem(s,var,13);
-  }
-  else if (strcmp(token,":O") == 0){
-    replace_elem(s,var,14);
-  }
-  else if (strcmp(token,":P") == 0){
-    replace_elem(s,var,15);
-  }
-  else if (strcmp(token,":Q") == 0){
-    replace_elem(s,var,16);
-  }
-  else if (strcmp(token,":R") == 0){
-    replace_elem(s,var,17);
-  } 
-  else if (strcmp(token,":S") == 0){
-    replace_elem(s,var,18);
-  }
-  else if (strcmp(token,":T") == 0){
-    replace_elem(s,var,19);
-  }
-  else if (strcmp(token,":U") == 0){
-    replace_elem(s,var,20);
-  }
-  else if (strcmp(token,":V") == 0){
-    replace_elem(s,var,21);
-  }
-  else if (strcmp(token,":W") == 0){
-    replace_elem(s,var,22);
-  }
-  else if (strcmp(token,":X") == 0){
-    replace_elem(s,var,23);
-  } 
-  else if (strcmp(token,":Y") == 0){
-    replace_elem(s,var,24);
-  }
-  else replace_elem(s,var,25);
+void choose_adletter(STACK *s ,STACK *var,char *token){
+  replace_elem(s,var,(token[1]-'A'));
 }
 
 /**
