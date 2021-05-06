@@ -250,6 +250,18 @@ char* head(char* s){
 }
 
 /**
+ * \brief Função que concatena um char a uma string (pela esquerda).
+ * 
+ * @param s SEstrutura stack onde são guardados os elementos. 
+ * 
+ */
+void choose_concatena_cstring(STACK *s){
+  char *s1 = reverse(pop_STRING(s));
+  char s2 = pop_CHAR(s);
+  push_STRING(s,reverse(strncat(s1,&s2,1))); 
+}
+
+/**
  * \brief Função que extrai a string do token com aspas.
  *
  * A função recebe o token com as aspas e extrai a string nele contida.
@@ -325,18 +337,6 @@ void choose_concatena_stringc(STACK *s){
   char s1 = pop_CHAR(s);
   char * s2 = pop_STRING(s);
   push_STRING(s,strncat(s2,&s1,1)); 
-}
-
-/**
- * \brief Função que concatena um char a uma string (pela esquerda).
- * 
- * @param s SEstrutura stack onde são guardados os elementos. 
- * 
- */
-void choose_concatena_cstring(STACK *s){
-  char *s1 = reverse(pop_STRING(s));
-  char s2 = pop_CHAR(s);
-  push_STRING(s,reverse(strncat(s1,&s2,1))); 
 }
 
 /**
@@ -486,21 +486,15 @@ void choose_ooc(STACK *s, STACK *var, char*token){
         }
     else switch (*token){
                 case '+':
-                  if (has_type(get_elem(s,1),STRING) && has_type(get_elem(s,0),STRING)) choose_concatena_string(s); 
-                  else if (has_type(get_elem(s,1),STRING) && has_type(get_elem(s,0),CHAR)) choose_concatena_stringc(s);
-                       else if (has_type(get_elem(s,1),CHAR) && has_type(get_elem(s,0),STRING)) choose_concatena_cstring(s);
-                            else choose_soma(s); 
-                  break;
+                  choose_soma_ou_concat (s); break;
                 case '*':
-                  if (has_type(get_elem(s,1),STRING) && has_type(get_elem(s,0),LONG)) choose_repete(s);
-                  else choose_multiplica(s); 
-                  break;
+                  choose_multiplica_ou_repete (s); break;
                 case '/':
                   choose_divide(s); break;
                 case '(':
-                  choose_decrementa(s); break;
+                  choose_decrementa_ou_removefirst (s); break;
                 case ')':
-                  choose_incrementa(s); break;
+                  choose_incrementa_ou_removelast (s); break;
                 case '&':
                   choose_E(s); break;
                 case '|':
@@ -534,17 +528,11 @@ void choose_ooc(STACK *s, STACK *var, char*token){
                 case '?':
                   if_then_else(s); break;
                 case '=':
-                  if (has_type(get_elem(s,1),STRING) && has_type(get_elem(s,0),LONG)) choose_elem_igual(s);
-                  else choose_igual(s); 
-                  break;
+                  choose_igual_ou_elemigual (s); break;
                 case '<':
-                  if (has_type(get_elem(s,1),STRING) && has_type(get_elem(s,0),LONG)) choose_nelems_menor(s);
-                  else choose_menor(s); 
-                  break;
+                  choose_menor_ou_nelemsmenor (s); break;
                 case '>':
-                  if (has_type(get_elem(s,1),STRING) && has_type(get_elem(s,0),LONG)) choose_nelems_maior(s);
-                  else choose_maior(s); 
-                  break;
+                  choose_maior_ou_nelemsmaior (s); break;
                 case '!':
                   choose_nao(s); break;
                 case ',': 
