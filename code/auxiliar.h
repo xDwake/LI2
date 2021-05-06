@@ -56,10 +56,11 @@ int is_adletterN_Z (char *token);
 void choose_adletterA_M(STACK *s ,STACK *var,char *token);
 void choose_adletterN_Z(STACK *s ,STACK *var,char *token);
 
-void choose_soma_ooc (STACK *s);
+
 void choose_multiplica_ou_repete (STACK *s);
 void choose_decrementa_ou_removefirst (STACK *s);
 void choose_incrementa_ou_removelast (STACK *s);
 void choose_igual_ou_elemigual (STACK *s);
 void choose_menor_ou_nelemsmenor (STACK *s);
 void choose_maior_ou_nelemsmaior (STACK *s);
+void choose_soma_ou_concat(STACK *s);
