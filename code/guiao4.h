@@ -29,6 +29,8 @@ int is_var(char *token);
 
 void choose_arithmetic(STACK *s, char *token);
 int is_arithmetic(char *token);
+int is_opstack(char *token);
+void choose_opstack(STACK *s, char *token);
 void choose_ooc(STACK *s, STACK *var, char*token);
 
 int is_double(char *token);

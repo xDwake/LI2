@@ -421,18 +421,21 @@ void choose_repete(STACK *s){
 int is_arithmetic(char *token){
     return (   strcmp(token,"+")==0 || strcmp(token,"*") == 0 || strcmp(token,"/") == 0 || strcmp(token,"(") == 0
             || strcmp(token,")")==0 || strcmp(token,"&") == 0 || strcmp(token,"|") == 0 || strcmp(token,"%") == 0
-            || strcmp(token,"^")==0 || strcmp(token,"~") == 0 || strcmp(token,"#") == 0 );
+            || strcmp(token,"^")==0 || strcmp(token,"~") == 0 || strcmp(token,"#") == 0 || strcmp(token,"-") == 0 );
 }
 
 /**
- * \brief Função auxiliar que infere se o token é algum dos operadores aritméticos.
+ * \brief Função auxiliar que infere a operação a realizar.
  * 
  * @param s Estrutura stack onde são guardados os elementos.
  * @param token Token que será analisado.
  * 
  */
 void choose_arithmetic(STACK *s, char *token){
-  switch (*token){
+  if(strcmp (token, "-") == 0) {
+    choose_subtrai (s);
+  }
+  else switch (*token){
                 case '+':
                   choose_soma_ou_concat (s); break;
                 case '*':
@@ -459,23 +462,27 @@ void choose_arithmetic(STACK *s, char *token){
 }  
 
 /**
- * \brief Função auxiliar que infere a operação em questão quando o token só tem um char.
+ * \brief Função que testa se o o token é um operador de modificação da stack.
+ * 
+ * @param token String(token) que irá ser testada. 
+ * 
+ * @returns !0 se for falso, 1 se verdadeiro.
+ */
+int is_opstack(char *token){
+    return (   strcmp(token,"_")==0 || strcmp(token,";") == 0 || strcmp(token,"\\") == 0 || strcmp(token,"@") == 0
+            || strcmp(token,"$")==0 || strcmp(token,"c") == 0 || strcmp(token,"i") == 0 || strcmp(token,"f") == 0
+            || strcmp(token,"l")==0) ;
+}
+
+/**
+ * \brief Função auxiliar que infere se a operação a realizar.
  * 
  * @param s Estrutura stack onde são guardados os elementos.
  * @param token Token que será analisado.
  * 
  */
-void choose_ooc(STACK *s, STACK *var, char*token){
-    if (is_var(token)){
-        choose_letter(s,var,25-(*token-'A'));
-    }    
-    else if(strcmp (token, "-") == 0) {
-          choose_subtrai (s);
-        }
-    else if(is_arithmetic(token)){
-      choose_arithmetic(s,token);
-    }    
-    else switch (*token){
+void choose_opstack(STACK *s, char *token){
+  switch (*token){
                 case '_':
                   choose_duplica(s); break;
                 case ';':
@@ -494,6 +501,27 @@ void choose_ooc(STACK *s, STACK *var, char*token){
                   choose_converteF(s); break;
                 case 'l':
                   choose_L(s); break; 
+  }
+}                  
+
+/**
+ * \brief Função auxiliar que infere a operação em questão quando o token só tem um char.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * @param token Token que será analisado.
+ * 
+ */
+void choose_ooc(STACK *s, STACK *var, char*token){
+    if (is_var(token)){
+        choose_letter(s,var,25-(*token-'A'));
+    }  
+    else if(is_arithmetic(token)){
+      choose_arithmetic(s,token);
+    }
+    else if(is_opstack(token)){
+      choose_opstack(s,token);
+    }     
+    else switch (*token){
                 case '?':
                   if_then_else(s); break;
                 case '=':
@@ -509,7 +537,6 @@ void choose_ooc(STACK *s, STACK *var, char*token){
                 case '"':
                   push_CHAR(s,' '); break;
                 case '[':
-                  break;
                 case ']':
                   break;      
                 default:
