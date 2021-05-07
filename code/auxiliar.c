@@ -508,26 +508,30 @@ void  short_minor (STACK *s) {
     case 0: ;
       long y = pop_LONG(s);
       long w = pop_LONG(s);
-      if (y < w) push_LONG (s,y);
-      else push_LONG (s,w);
+      switch (y<w) {
+		case 0 : push_LONG (s,w); break;
+		default : push_LONG (s,y); break; }
       break;
     case 1: ;
       double z = pop_DOUBLE (s);
       double t = pop_DOUBLE (s);
-      if (z < t) push_DOUBLE (s,z);
-      else push_DOUBLE (s,t);
+      switch (z<t) {
+      	case 0 : push_DOUBLE (s,t); break;
+      	default : push_DOUBLE (s,z); break; }
       break;
     case 2: ;
       long a = pop_LONG (s);
       double b = pop_DOUBLE (s);
-      if (a < b) push_LONG (s,a);
-      else push_DOUBLE (s,b);
+      switch (a < b) {
+        case 0 : push_DOUBLE (s,b); break;
+        default : push_LONG (s,a); break; }
       break;
     case 3: ;
       double c = pop_DOUBLE (s);
       long d = pop_LONG (s);
-      if (c < d) push_DOUBLE (s,c);
-      else push_LONG (s,d);
+      switch (c < d) { 
+      	case 0 : push_LONG (s,d); break;
+        default : push_DOUBLE (s,c); break; }
       break;
     case 9: ;
       char* s1 = pop_STRING(s); char* s2 = pop_STRING(s);
@@ -552,26 +556,30 @@ void short_higher (STACK *s) {
     case 0: ;
       long y = pop_LONG(s);
       long w = pop_LONG(s);
-      if (y > w) push_LONG (s,y);
-      else push_LONG (s,w);
+      switch (y > w) {
+      	case 0 : push_LONG (s,w); break;
+        default : push_LONG (s,y); break; }
       break;
     case 1: ;
       double z = pop_DOUBLE (s);
       double t = pop_DOUBLE (s);
-      if (z > t) push_DOUBLE (s,z);
-      else push_DOUBLE (s,t);
+      switch (z > t) {
+        case 0 : push_DOUBLE (s,t); break;
+        default : push_DOUBLE (s,z); break; }
       break;
     case 2: ;
       long a = pop_LONG (s);
       double b = pop_DOUBLE (s);
-      if (a > b) push_LONG (s,a);
-      else push_DOUBLE (s,b);
+      switch (a > b) {
+        case 0 : push_DOUBLE (s,b); break;
+        default : push_LONG (s,a); break; }
       break;
     case 3: ;
       double c = pop_DOUBLE (s);
       long d = pop_LONG (s);
-      if (c > d) push_DOUBLE (s,c);
-      else push_LONG (s,d);
+      switch (c > d) {
+        case 0 : push_LONG (s,d); break;
+        default : push_DOUBLE (s,c); break; }
       break;
     case 9: ;
       char* s1 = pop_STRING(s); char* s2 = pop_STRING(s);
