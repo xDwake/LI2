@@ -633,22 +633,10 @@ void if_then_else (STACK *s) {
  */
 void choose_igual (STACK *s){
   switch(checks_type(s)){
-    case 0: ;
-      if (pop_LONG (s) == pop_LONG (s)) push_LONG (s,1);
-      else push_LONG(s,0);
-      break;
-    case 1: ;
-      if (pop_DOUBLE (s) == pop_DOUBLE (s)) push_LONG (s,1);
-      else push_LONG(s,0);
-      break;
-    case 2: ;
-      if (pop_LONG (s) == pop_DOUBLE (s)) push_LONG (s,1);
-      else push_LONG (s,0);
-      break;
-    case 3: ;
-      if (pop_DOUBLE (s) == pop_LONG (s)) push_LONG(s,1);
-      else push_LONG(s,0);
-      break;
+    case 0: push_LONG (s, pop_LONG (s) == pop_LONG (s)); break;
+    case 1: push_LONG (s, pop_DOUBLE (s) == pop_DOUBLE (s)); break;
+    case 2: push_LONG (s, pop_LONG (s) == pop_DOUBLE (s)); break;
+    case 3: push_LONG (s, pop_DOUBLE (s) == pop_LONG (s)); break;
     case 9: ;
       char* s1 = pop_STRING(s); char* s2 = pop_STRING(s);
       push_LONG(s,compare_lexical_igual(s2,s1)); break;   
