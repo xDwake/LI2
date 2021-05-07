@@ -509,8 +509,8 @@ void  short_minor (STACK *s) {
       long y = pop_LONG(s);
       long w = pop_LONG(s);
       switch (y<w) {
-		case 0 : push_LONG (s,w); break;
-		default : push_LONG (s,y); break; }
+		    case 0 : push_LONG (s,w); break;
+		    default : push_LONG (s,y); break; }
       break;
     case 1: ;
       double z = pop_DOUBLE (s);
@@ -665,33 +665,38 @@ void choose_igual (STACK *s){
  */
 void choose_menor (STACK *s){
   switch(checks_type(s)){
-    case 0: ;
-      if (pop_LONG (s) > pop_LONG (s)) push_LONG (s,1);
-      else push_LONG(s,0);
-      break;
+    case 0: push_LONG (s, pop_LONG (s) > pop_LONG (s)); break;
     case 1: ;
-      if (pop_DOUBLE (s) > pop_DOUBLE (s)) push_LONG (s,1);
-      else push_LONG(s,0);
+        push_LONG (s, pop_DOUBLE (s) > pop_DOUBLE (s)); /*
+      switch (pop_DOUBLE (s) > pop_DOUBLE (s)) {
+        case 0 : push_LONG (s,0); break;
+        default : push_LONG(s,1); break; }*/
       break;
     case 2: ;
-      if (pop_LONG (s) > pop_DOUBLE (s)) push_LONG (s,1);
-      else push_LONG (s,0);
+        push_LONG (s, pop_LONG (s) > pop_DOUBLE (s)); /*
+      switch (pop_LONG (s) > pop_DOUBLE (s)) {
+        case 0 : push_LONG (s,0); break;
+        default : push_LONG(s,1); break; } */
       break;
-    case 3: ;
+    case 3: ; 
+        push_LONG (s, pop_DOUBLE (s) > pop_LONG (s)); /*
       if (pop_DOUBLE (s) > pop_LONG (s)) push_LONG(s,1);
-      else push_LONG(s,0);
+      else push_LONG(s,0); */
       break;
     case 4: ;
+        push_LONG (s, pop_CHAR (s) > pop_CHAR (s)); /*
       if (pop_CHAR (s) > pop_CHAR (s)) push_LONG (s,1);
-      else push_LONG(s,0);
+      else push_LONG(s,0); */
       break;
     case 6: ;
+        push_LONG (s, pop_CHAR (s) > pop_LONG (s)); /*
       if (pop_CHAR (s) > pop_LONG (s)) push_LONG(s,1);
-      else push_LONG(s,0);
+      else push_LONG(s,0);*/
       break;
     case 5: ;
+        push_LONG (s, pop_LONG (s) > pop_CHAR (s)); /*
       if (pop_LONG (s) > pop_CHAR (s)) push_LONG(s,1);
-      else push_LONG(s,0);
+      else push_LONG(s,0); */
       break;
     case 9: ;
       char* s1 = pop_STRING(s); char* s2 = pop_STRING(s);
