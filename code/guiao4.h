@@ -27,6 +27,8 @@ void choose_remove_last(STACK *s);
 
 int is_var(char *token);
 
+void choose_arithmetic(STACK *s, char *token);
+int is_arithmetic(char *token);
 void choose_ooc(STACK *s, STACK *var, char*token);
 
 int is_double(char *token);
