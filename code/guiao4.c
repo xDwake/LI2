@@ -522,25 +522,17 @@ void choose_ooc(STACK *s, STACK *var, char*token){
       choose_opstack(s,token);
     }     
     else switch (*token){
-                case '?':
-                  if_then_else(s); break;
-                case '=':
-                  choose_igual_ou_elemigual (s); break;
-                case '<':
-                  choose_menor_ou_nelemsmenor (s); break;
-                case '>':
-                  choose_maior_ou_nelemsmaior (s); break;
-                case '!':
-                  choose_nao(s); break;
-                case ',': 
-                  choose_range(s); break;
-                case '"':
-                  push_CHAR(s,' '); break;
+                case '?': if_then_else(s); break;
+                case '=': choose_igual_ou_elemigual (s); break;
+                case '<': choose_menor_ou_nelemsmenor (s); break;
+                case '>': choose_maior_ou_nelemsmaior (s); break;
+                case '!': choose_nao(s); break;
+                case ',': choose_range(s); break;
+                case '"': push_CHAR(s,' '); break;
                 case '[':
                 case ']':
                   break;      
-                default:
-                  push_STRING(s,token); break;
+                default: push_STRING(s,token); break;
         }                
 }
 
