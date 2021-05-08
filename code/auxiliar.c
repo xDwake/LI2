@@ -830,32 +830,15 @@ void choose_nao(STACK *s){
  * 
  */
 void fill_var(STACK *var){
-  push_LONG(var,10);
-  push_LONG(var,11);
-  push_LONG(var,12);
-  push_LONG(var,13);
-  push_LONG(var,14);
-  push_LONG(var,15);
-  push_LONG(var,0);
-  push_LONG(var,0);
-  push_LONG(var,0);
-  push_LONG(var,0);
-  push_LONG(var,0);
-  push_LONG(var,0);
-  push_LONG(var,0);
-  push_CHAR(var,'\n');
-  push_LONG(var,0);
-  push_LONG(var,0);
-  push_LONG(var,0);
-  push_LONG(var,0);
-  push_CHAR(var,' ');
-  push_LONG(var,0);
-  push_LONG(var,0);
-  push_LONG(var,0);
-  push_LONG(var,0);
-  push_LONG(var,0);
-  push_LONG(var,1);
-  push_LONG(var,2);
+  push_LONG(var,10); push_LONG(var,11); push_LONG(var,12);
+  push_LONG(var,13); push_LONG(var,14); push_LONG(var,15);
+  push_LONG(var,0); push_LONG(var,0); push_LONG(var,0); 
+  push_LONG(var,0); push_LONG(var,0); push_LONG(var,0);
+  push_LONG(var,0); push_CHAR(var,'\n'); push_LONG(var,0);
+  push_LONG(var,0); push_LONG(var,0); push_LONG(var,0);
+  push_CHAR(var,' '); push_LONG(var,0); push_LONG(var,0);
+  push_LONG(var,0); push_LONG(var,0); push_LONG(var,0);
+  push_LONG(var,1); push_LONG(var,2);
 }
 
 /**
