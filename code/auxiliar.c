@@ -439,8 +439,7 @@ void short_E (STACK *s) {
       if (pop_LONG(s) != 0 && t) push_DOUBLE (s,t);
       else push_LONG (s,0);
       break;  
-    default:
-      break;
+    default: break;
   }
 }
 
@@ -525,6 +524,66 @@ void short_OU (STACK *s) {
 }
 
 /**
+ * \brief Função auxiliar do operador e< para dois longs.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
+void aux_minor_c0(STACK *s){
+  long y = pop_LONG(s);
+  long w = pop_LONG(s);
+  switch (y<w) {
+		case 0 : push_LONG (s,w); break;
+		default : push_LONG (s,y); break; 
+  }
+}
+
+/**
+ * \brief Função auxiliar do operador e< para um long e um char.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
+void aux_minor_c1(STACK *s){
+  double z = pop_DOUBLE (s);
+  double t = pop_DOUBLE (s);
+  switch (z<t) {
+    case 0 : push_DOUBLE (s,t); break;
+    default : push_DOUBLE (s,z); break; 
+  }
+}
+
+/**
+ * \brief Função auxiliar do operador e< para um long e um char.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
+void aux_minor_c2(STACK *s){
+  long a = pop_LONG (s);
+  double b = pop_DOUBLE (s);
+  switch (a < b) {
+      case 0 : push_DOUBLE (s,b); break;
+      default : push_LONG (s,a); break; 
+  }
+}
+
+/**
+ * \brief Função auxiliar do operador e< para dois char.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
+void aux_minor_c3(STACK *s){
+  double c = pop_DOUBLE (s);
+  long d = pop_LONG (s);
+  switch (c < d) { 
+    case 0 : push_LONG (s,d); break;
+    default : push_DOUBLE (s,c); break; 
+  }
+}
+
+/**
  * \brief Função que procura o menor entre dois elementos.
  *
  * A função compara os dois elementos e coloca o menor na stack.
@@ -534,43 +593,83 @@ void short_OU (STACK *s) {
  */
 void  short_minor (STACK *s) {
   switch(checks_type(s)){
-    case 0: ;
-      long y = pop_LONG(s);
-      long w = pop_LONG(s);
-      switch (y<w) {
-		    case 0 : push_LONG (s,w); break;
-		    default : push_LONG (s,y); break; }
-      break;
-    case 1: ;
-      double z = pop_DOUBLE (s);
-      double t = pop_DOUBLE (s);
-      switch (z<t) {
-      	case 0 : push_DOUBLE (s,t); break;
-      	default : push_DOUBLE (s,z); break; }
-      break;
-    case 2: ;
-      long a = pop_LONG (s);
-      double b = pop_DOUBLE (s);
-      switch (a < b) {
-        case 0 : push_DOUBLE (s,b); break;
-        default : push_LONG (s,a); break; }
-      break;
-    case 3: ;
-      double c = pop_DOUBLE (s);
-      long d = pop_LONG (s);
-      switch (c < d) { 
-      	case 0 : push_LONG (s,d); break;
-        default : push_DOUBLE (s,c); break; }
-      break;
+    case 0:
+      aux_minor_c0(s); break;
+    case 1:
+      aux_minor_c1(s); break;
+    case 2:
+      aux_minor_c2(s); break;
+    case 3: 
+      aux_minor_c3(s); break;
     case 9: ;
       char* s1 = pop_STRING(s); char* s2 = pop_STRING(s);
       if (compare_lexical_menor(s2,s1)) push_STRING(s,s2);
       else push_STRING(s,s1); 
       break;     
-    default:
-      break;
+    default: break;
   }
 }
+
+/**
+ * \brief Função auxiliar do operador e> para dois longs.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
+void aux_higher_c0(STACK *s){
+  long y = pop_LONG(s);
+  long w = pop_LONG(s);
+  switch (y>w) {
+		case 0 : push_LONG (s,w); break;
+		default : push_LONG (s,y); break; 
+  }
+}
+
+/**
+ * \brief Função auxiliar do operador e> para um long e um char.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
+void aux_higher_c1(STACK *s){
+  double z = pop_DOUBLE (s);
+  double t = pop_DOUBLE (s);
+  switch (z>t) {
+    case 0 : push_DOUBLE (s,t); break;
+    default : push_DOUBLE (s,z); break; 
+  }
+}
+
+/**
+ * \brief Função auxiliar do operador e> para um long e um char.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
+void aux_higher_c2(STACK *s){
+  long a = pop_LONG (s);
+  double b = pop_DOUBLE (s);
+  switch (a > b) {
+      case 0 : push_DOUBLE (s,b); break;
+      default : push_LONG (s,a); break; 
+  }
+}
+
+/**
+ * \brief Função auxiliar do operador e> para dois char.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
+void aux_higher_c3(STACK *s){
+  double c = pop_DOUBLE (s);
+  long d = pop_LONG (s);
+  switch (c > d) { 
+    case 0 : push_LONG (s,d); break;
+    default : push_DOUBLE (s,c); break; 
+  }
+}
+
 
 /**
  * \brief Função que procura o maior entre dois elementos.
@@ -582,34 +681,14 @@ void  short_minor (STACK *s) {
  */
 void short_higher (STACK *s) {
   switch(checks_type(s)){
-    case 0: ;
-      long y = pop_LONG(s);
-      long w = pop_LONG(s);
-      switch (y > w) {
-      	case 0 : push_LONG (s,w); break;
-        default : push_LONG (s,y); break; }
-      break;
-    case 1: ;
-      double z = pop_DOUBLE (s);
-      double t = pop_DOUBLE (s);
-      switch (z > t) {
-        case 0 : push_DOUBLE (s,t); break;
-        default : push_DOUBLE (s,z); break; }
-      break;
-    case 2: ;
-      long a = pop_LONG (s);
-      double b = pop_DOUBLE (s);
-      switch (a > b) {
-        case 0 : push_DOUBLE (s,b); break;
-        default : push_LONG (s,a); break; }
-      break;
-    case 3: ;
-      double c = pop_DOUBLE (s);
-      long d = pop_LONG (s);
-      switch (c > d) {
-        case 0 : push_LONG (s,d); break;
-        default : push_DOUBLE (s,c); break; }
-      break;
+    case 0:
+      aux_higher_c0(s); break;
+    case 1:
+      aux_higher_c1(s); break;
+    case 2:
+      aux_higher_c2(s); break;
+    case 3: 
+      aux_higher_c3(s); break;
     case 9: ;
       char* s1 = pop_STRING(s); char* s2 = pop_STRING(s);
       if (compare_lexical_maior(s2,s1)) push_STRING(s,s2);
@@ -627,9 +706,7 @@ void short_higher (STACK *s) {
  * 
  */
 void if_then_else (STACK *s) {
-  DATA x = pop(s);
-  DATA y = pop(s);
-  DATA cond = pop(s);
+  DATA x = pop(s); DATA y = pop(s); DATA cond = pop(s);
   switch (cond.type){
     case CHAR:{ 
       if (cond.CHAR != 0) push (s,y);
