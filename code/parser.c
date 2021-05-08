@@ -1,6 +1,6 @@
 /**
  * @file parser.c 
- * \brief Funções auxiliares do programa.
+ * \brief Filtragem de inputs.
  */ 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,10 +12,45 @@
 #include <math.h>
 
 /**
+ * \brief Função auxiliar para a filtragem de inputs no parser.
+ * 
+ * @param token Token a ser analisado.
+ * 
+ * @returns 0 se falso, !0 se verdadeiro.
+ */
+int is_aux_parser(char *token){
+  return (is_adletter(token) || is_elogic(token) || itoc(token) || is_string(token,'\"') || token[strlen(token)-1]=='\"');
+}
+
+/**
+ * \brief Função auxiliar para a filtragem de inputs no parser.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ * @param var Estrutura stack onde estão guardadas as variaveis.
+ * 
+ * @param token Token a ser verificado.
+ * 
+ */
+void aux_parser (STACK *s, STACK *var, char *token){
+  if (is_adletter(token)){
+      choose_adletter(s,var,token);
+  }  
+  else if (is_elogic(token)){
+      choose_elogic(s,token);
+  }
+  else if (itoc(token)) {
+      choose_ooc(s,var,token);
+  }
+  else if (is_string(token,'\"') || token[strlen(token)-1]=='\"'){
+          get_string(s,token);
+  } 
+}
+
+/**
  * \brief Função que recebe os inputs do utilizador e realiza as operações em conformidade.
  * 
- * Esta função separa os inputs por espaços, tabs ou mudanças de linha, e para a realização do guião 1 apenas realiza as operações
- * matemáticas com os inputs da forma estipulada pelo enunciado.
+ * Esta função separa os inputs por espaços, tabs ou mudanças de linha, através do strtok e filtra esses mesmos tokens.
  * 
  * @param line A linha de inputs que foi lida.
  */ 
@@ -31,21 +66,12 @@ void parser (char *line){
         if (strlen(rem) == 0){
            push_LONG(s,val_i);
         }
-        else if (is_adletter(token)){
-          choose_adletter(s,var,token);
-        }  
-        else if (is_elogic(token)){
-          choose_elogic(s,token);
-        }
-        else if (itoc(token)) {
-          choose_ooc(s,var,token);
+        else if (is_aux_parser(token)){
+          aux_parser(s,var,token);
         }
         else if (is_double(token)){
           push_DOUBLE(s,val_d);
         } 
-        else if (is_string(token,'\"') || token[strlen(token)-1]=='\"'){
-          get_string(s,token);
-        }
         else push_STRING(s,token);
     }  
     print_stack(s);
