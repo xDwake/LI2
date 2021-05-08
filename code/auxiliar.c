@@ -881,53 +881,34 @@ void choose_letter(STACK *s,STACK *var, int x){
 int checks_type(STACK *s){
   int r=11;
   switch(get_elem(s,0).type){
-    case LONG:
-      switch (get_elem(s,1).type){
-        case LONG:
-          r=0; break;
-        case DOUBLE:
-          r=2; break;
-        case CHAR:
-          r=5; break;
-        default:
-          break;      
-      }
+    case LONG: switch (get_elem(s,1).type){
+                  case LONG: r=0; break;
+                  case DOUBLE: r=2; break;
+                  case CHAR: r=5; break;
+                  default: break;      
+               }
       break;  
-    case DOUBLE:  
-      switch (get_elem(s,1).type){
-        case LONG:
-          r=3; break;
-        case DOUBLE:
-          r=1; break;
-        default:
-          break;  
-      }
+    case DOUBLE: switch (get_elem(s,1).type){
+                  case LONG: r=3; break;
+                  case DOUBLE: r=1; break;
+                  default: break;  
+                }
       break;
-    case CHAR:
-      switch (get_elem(s,1).type){
-        case LONG:
-          r=6; break;
-        case CHAR:
-          r=4; break;
-        case STRING:
-          r=10; break;  
-        default:
-          break;      
-      }
+    case CHAR: switch (get_elem(s,1).type){
+                 case LONG: r=6; break;
+                 case CHAR: r=4; break;
+                 case STRING: r=10; break;  
+                 default: break;      
+               }
       break;
-    case STRING:
-      switch(get_elem(s,1).type){
-        case LONG:
-          r=7; break;
-        case CHAR:
-          r=8; break;
-        case STRING:
-          r=9; break;  
-        default:
-          break;
-      }  
-    default: 
-      break;
+    case STRING: switch(get_elem(s,1).type){
+                   case LONG: r=7; break;
+                   case CHAR: r=8; break;
+                   case STRING: r=9; break;  
+                   default: break;
+                 }
+       break;            
+    default: break;
   }
   return r;
 }
