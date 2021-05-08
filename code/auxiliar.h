@@ -30,6 +30,10 @@ void choose_converteI (STACK *s);
 void choose_converteF (STACK *s);
 void choose_L (STACK *s);
 
+void aux_c0 (STACK *s);
+void aux_c1 (STACK *s);
+void aux_c2 (STACK *s);
+void aux_c3 (STACK *s);
 void short_OU (STACK *s);
 void short_E (STACK *s);
 void short_minor (STACK *s);

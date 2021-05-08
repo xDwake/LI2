@@ -445,6 +445,63 @@ void short_E (STACK *s) {
 }
 
 /**
+ * \brief Função auxiliar do operador e| para dois longs.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
+void aux_c0 (STACK *s){
+      long y = pop_LONG(s);
+      long w = pop_LONG(s);
+      if (w != 0) push_LONG (s,w);
+      else if (y!=0) push_LONG (s,y);
+           else push_LONG(s,0);
+}      
+
+/**
+ * \brief Função auxiliar do operador e| para um long e um char.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
+void aux_c1 (STACK *s) {
+      double z = pop_DOUBLE (s);
+      double t = pop_DOUBLE (s);
+      if (t != 0) push_DOUBLE(s,t);
+      else if (z!=0) push_DOUBLE (s,z);
+           else push_LONG(s,0);
+}
+
+/**
+ * \brief Função auxiliar do operador e| para um long e um char.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
+void aux_c2 (STACK *s) {
+      long a = pop_LONG (s);
+      double b = pop_DOUBLE (s);
+      if (b != 0) push_DOUBLE (s,b);
+      else if (a!=0) push_LONG (s,a);
+           else push_LONG(s,0);
+}
+
+/**
+ * \brief Função auxiliar do operador e| para dois char.
+ * 
+ * @param s Estrutura stack onde são guardados os elementos.
+ * 
+ */
+void aux_c3 (STACK *s) {
+      double c = pop_DOUBLE (s);
+      long d = pop_LONG (s);
+      if (d != 0) push_LONG (s,d);
+      else if (c!=0) push_DOUBLE (s,c);
+           else push_LONG(s,0);
+}
+
+
+/**
  * \brief Função que testa a conjunção entre dois elementos.
  *
  * Função correspondente ao "Ou" lógico mas com shortcut. 
@@ -454,42 +511,14 @@ void short_E (STACK *s) {
  */
 void short_OU (STACK *s) {
   switch(checks_type(s)){
-    case 0: ;
-      long y = pop_LONG(s);
-      long w = pop_LONG(s);
-      if (w != 0) push_LONG (s,w);
-      else switch (y) {
-		case 0 : push_LONG (s,0); break;
-		default : push_LONG (s, y); break;
-	}
-      break;
-    case 1: ;
-      double z = pop_DOUBLE (s);
-      double t = pop_DOUBLE (s);
-      if (t != 0) push_DOUBLE(s,t);
-      else switch ((int) z) {
-		case 0 : push_LONG (s,0); break;
-		default : push_LONG (s, z); break;
-	}
-      break;
-    case 2: ;
-      long a = pop_LONG (s);
-      double b = pop_DOUBLE (s);
-      if (b != 0) push_DOUBLE (s,b);
-      else switch (a) {
-		case 0 : push_LONG (s,0); break;
-		default : push_LONG (s, a); break;
-	}
-      break;
-    case 3: ;
-      double c = pop_DOUBLE (s);
-      long d = pop_LONG (s);
-      if (d != 0) push_LONG (s,d);
-      else switch ((int) c) {
-		case 0 : push_LONG (s,0); break;
-		default : push_LONG (s, c); break;
-	}
-      break;  
+    case 0:
+      aux_c0(s); break;
+    case 1:
+      aux_c1(s); break;
+    case 2:
+      aux_c2(s); break;
+    case 3:
+      aux_c3(s); break;
     default:
       break;
   }
