@@ -880,20 +880,20 @@ void choose_letter(STACK *s,STACK *var, int x){
  */
 int checks_type(STACK *s){
   int r=11;
-  if(has_type(get_elem(s,0),DOUBLE)&&has_type(get_elem(s,1),DOUBLE)) r=1;
-  else if (has_type(get_elem(s,0),DOUBLE)&&has_type(get_elem(s,1),LONG)) r=3;
-  else switch(get_elem(s,0).type){
+  switch(get_elem(s,0).type){
     case LONG: switch (get_elem(s,1).type){
                   case LONG: r=0; break;
                   case DOUBLE: r=2; break;
-                  case CHAR: r=5; break;
-                  default: break;      
-               } break; 
+                  default: r=5; break;      
+               } break;  
+    case DOUBLE: switch (get_elem(s,1).type){
+                  case LONG: r=3; break;
+                  default: r=1; break;  
+                } break;
     case CHAR: switch (get_elem(s,1).type){
                  case LONG: r=6; break;
-                 case CHAR: r=4; break;
-                 case STRING: r=10; break;  
-                 default: break;      
+                 case CHAR: r=4; break; 
+                 default: r=10; break;      
                } break;
     case STRING: switch(get_elem(s,1).type){
                    case LONG: r=7; break;
